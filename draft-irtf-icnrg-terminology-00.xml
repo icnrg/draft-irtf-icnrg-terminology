@@ -193,13 +193,17 @@ end of the old Section 2 -->
 	
 	<t>Data-centric security: </t>
 	
-	<t>Each ICN data packet carries a signature that binds its name and content together, allowing a named packet to be fetched from anywhere and the user is still able to verify its validity.
+	<t>ICN security concerns with data authentication, confidentiality, and User privacy.  Each ICN data packet carries a signature that binds its name and content together, allowing a named packet to be fetched from anywhere and the user is still able to verify its validity. [Should this be moved to term definition?]
+	</t>
+
+	<t>ICN node: </t>
+	
+	<t>A node in an ICN network may play anyone or a combination of the three roles: a data producer, a data consumer, and a forwarder for interest and data packets.  Note that a forwarder can be a packet mule, that is it may carry an interest or data packet over some distance before forwarding it to next node.  A ICN node may also run routing protocols to assist its interest forwarding decisions.
 	</t>
 	
-	<t>ICN node: A node in an ICN network may play anyone or a combination of the three roles: a data producer, a data consumer, and a forwarder for interest and data packets.  Note that a forwarder can be a packet mule, that is it may carry an interest or data packet over some distance before forwarding it to next node.
-	</t>
+	<t>Stateful forwarding plane:</t>
 	
-	<t>Stateful forwarding plane: An ICN forwarder keeps three data structures: a FIB, a Pending Interest Table (PIT), and a Content Store (CS). When it receives an ICN interest packet, it checks CS and PIT to find an matching name; if no matching found, it records the interest in PIT and forwards it to the next hop(s) toward the requested content.
+	<t>An ICN forwarder keeps three data structures: a FIB, a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes interest forwarding strategies which takes input from both FIB and measurement to make interest forwarding decisions.  When a node receives an ICN interest packet, it checks CS and PIT to find a matching name; if no matching is found, it records the interest in PIT and forwards it to the next hop(s) toward the requested content.
 	</t>
 	
 </section>
