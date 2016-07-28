@@ -11,7 +11,7 @@
 <?rfc comments="yes"?>
 <?rfc inline="yes"?>
 <?rfc text-list-symbols="-o*+"?>
-<rfc category="info" docName="draft-irtf-icnrg-terminology-00">
+<rfc category="info" docName="draft-wissingh-icnrg-terminology-00">
   <front>
     <title abbrev="ICN Terminology">Information-Centric Networking:
     Terminology</title>
@@ -40,19 +40,19 @@
       </address>
     </author>
 
+    <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
+      <organization>UCLA</organization>
+
+      <address>
+        <email>aa@cs.ucla.edu</email>
+      </address>
+    </author>
+
     <author fullname="David Oran" initials="D." surname="Oran">
       <organization>Cisco Systems, Inc.</organization>
 
       <address>
         <email>oran@cisco.com</email>
-      </address>
-    </author>
-
-    <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
-      <organization>UCLA</organization>
-
-      <address>
-        <email>lixia@cs.ucla.edu</email>
       </address>
     </author>
 
