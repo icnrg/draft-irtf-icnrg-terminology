@@ -52,7 +52,7 @@ endif
 # Stuff that you probably don't want to touch..
 BIBURL = rsync3.xml.resource.org::xml2rfc.bibxml
 # url for on-line XML2RFC converter
-XML2RFCWEB = http://xml2rfc.ietf.org/cgi-bin/xml2rfc.cgi
+XML2RFCWEB = https://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi
 # url for on-line rfcdiff
 RFCDIFFWEB = http://tools.ietf.org/rfcdiff
 DRAFTXML = $(DRAFT).xml
