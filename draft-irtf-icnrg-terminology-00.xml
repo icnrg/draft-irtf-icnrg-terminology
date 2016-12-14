@@ -49,14 +49,22 @@
     </author>
 
     <author fullname="David Oran" initials="D." surname="Oran">
-      <organization>Cisco Systems, Inc.</organization>
+      <organization>Network Systems Research &amp; Design</organization>
 
       <address>
-        <email>oran@cisco.com</email>
+        <email>daveoran@orandom.net</email>
       </address>
     </author>
 
-    <date day="8" month="July" year="2016"/>
+    <author fullname="Christian Tschudin" initials="C." surname="Tschudin">
+      <organization>University of Basel</organization>
+
+      <address>
+        <email>christian.tschudin@unibas.ch</email>
+      </address>
+    </author>
+
+    <date day="14" month="Dec" year="2016"/>
 
     <area>General</area>
 
@@ -69,7 +77,7 @@
       network communications are accomplished by requesting named content,
       instead of sending packets to destination addresses. This document
       provides an overview of the terminology and definitions that have been
-      used in describing this new paradigm. This document is a product
+      used by the projects CCNx and NDN in describing this new paradigm. This document is a product
       of the IRTF Information-Centric Networking Research Group (ICNRG).</t>
     </abstract>
   </front>
@@ -78,16 +86,18 @@
     <section anchor="introduction" title="Introduction">
       <t>Information-centric networking (ICN) is an approach to evolve the
         Internet infrastructure from the existing host-centric design to
-        a data-centric architecture where named data becomes the essential
-        network primitive. The ICN design directly names and secures data
-        objects, making them independent of their location or means of
-        transportation, and enabling native multicast delivery and ubiquitous
+        a data-centric architecture where data access by name becomes the essential
+        network primitive. The goal is to let applications refer to data independently of their location or means of
+        transportation, which --for immutable data items-- enables native multicast delivery, ubiquitous
         in-network caching and replication of data objects.</t>
 
       <t>As the work on this topic continues to evolve, many new terms are
         born over time. The goal of this document is to provide a complete
-        collection of these terms with a corresponding definition. To help
-        provide the context of the individual terms to be defined, in this
+        collection of these terms with a corresponding definition as they are
+        used in the CCNx and NDN project. Other, historic ICN projects like NetInf,
+        XIA or Mobility First are not (yet) covered.</t>
+
+      <t>To help provide the context of the individual terms to be defined, in this
         draft we first sketch the bigger picture of an ICN network, introducing
         the basic concepts and identifying the major components in the
         architecture in section 2 after which in section 3 ICN related terms
@@ -95,30 +105,63 @@
     </section>
 
     <section anchor="architecture" title="A Sketch of the Big Picture of an ICN Network Architecture">
-      <t>In an ICN network data is fetched by names. This is accomplished by defining
-        two types of network packet formats: interest packets that request a piece of
-        named content and data packets that carry the requested content. Every data
-        packet must be cryptographically signed which binds its name and content together.
-        A basic set of ICN concepts is listed below:</t>
 
-      <t>Data Naming:</t>
-      <t>Within ICN, the granularity of names is on a per packet basis. This implies
-        that if the size of a piece of content from an application exceeds the network
-        packet size limit, the content is segmented into multiple data packets. Each of
-        these individual data packets is then uniquely named with the content name
-        concatenated with the segment number.</t>
+      <t>In networking terms an ICN is a delivery infrastructure for
+      remote named data. A compatible distributed systems view is that
+      an ICN is a distributed lookup service. The following list
+      describes basic ICN concepts needed to discuss the
+      implementation of this service abstraction:</t>
 
-      <t>Each ICN data packet is also immutable. This is accomplished by assigning a
-        version number to each piece of application content. When the content changes,
-        the version number in its name changes as well.</t>
+      <t>Request-Reply Protocol (Interest and Data Packet):</t>
+        <t>An ICN's lookup service is implemented by defining two
+        types of network packet formats: Interest packets that request
+        content by name, and data packets that carry the requested
+        content.  The returned data packet must match the request's
+        parameters (e.g., having a partially or fully matching
+        name). If the request is ambigious and several data packets
+        would satisfy the request, the ICN network will typically
+        return only one matching data packet.</t>
 
-      <t>Data-Centric Security:</t>
-      <t>Security within ICN concerns data authentication, confidentiality, and user
-        privacy. Each ICN data packet carries a signature that binds the name and content
-        of the data packet together, allowing a named packet to be fetched from anywhere
-        while the application is still able to verify the validity of the data packet.</t>
+      <t>Packet and Content Names:</t>
+        <t>Each data packet has one or more name by which its content
+        can be referenced.  Without a irrefutable binding between a
+        name of a data packet and its content, data packet names
+        would be useless for fetching specific content. In ICN,
+        checking a data packet's name-content binding is achieved
+        through cryptographic means, either relying on an implicit
+        name (=cryptographic hash of the data packet) or a
+        cryptographic signature that explicitely binds an
+        application-chosen name to a data packet's content.</t>
+        
+      <t>Data Authenticity and Encryption:</t>
+        <t>Signatures carried in ICN packets enable applications and
+        the network to validate the provenance of some ICN packet
+        (=assert which key was used to sign). If a corresponding trust
+        infrastructure (e.g., PKI) is in place, a packet's signature
+        even enables to assess authenticity wrt to real world
+        identities. Whether a data packet's content (=payload) itself
+        is encrypted or not is irrelevant for the ICN network: The use
+        and the management of content encryption keys is fully in the
+        hands of the application layer.
+        <vspace blankLines="2"></vspace>
+        </t>
 
-      <t>ICN node:</t>
+      <t>Segmenting and Versioning:</t>
+        <t>An ICN network will be engineered for some packet size
+        limit. As application-level data objects will often be
+        considerably larger, objects must be segmented into multiple
+        data packets. The names for these data packets can, for
+        example, be constructed by choosing one application-level
+        object name to which a different suffix is added for each
+        segment. The same method can be used to handle different
+        versions of an application-level object by including a version
+        number into the name of the overall object. Handling
+        link-layer technologies which lead to even smaller
+        fragmentation of ICN packets is done inside the ICN network
+        and is not visible at the service interface.
+        </t>
+
+      <t>ICN Node:</t>
       <t>A node within an ICN network can fulfill the role of a data producer, a data consumer,
         and/or a forwarder for interest and data packets. When a forwarder has connectivity
         to neighbor nodes, it performs interest and data packet forwarding in real time. It can
@@ -126,14 +169,17 @@
         some distance before forwarding it to next node. An ICN node may also run routing
         protocols to assist its interest forwarding decisions.</t>
 
-      <t>Stateful forwarding plane:</t>
-      <t>Generally speaking, an ICN forwarder keeps three data structures: a Forwarding Interest
+      <t>Stateful Forwarding Plane:</t>
+      <t>The canonical way of implementing packet forwarding in an ICN network like CCNx and NDN
+        relies on three data structures that capture a node's state: a Forwarding Interest
         Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes
         interest forwarding strategies which takes input from both FIB and measurements to make
         interest forwarding decisions.  When a node receives an ICN interest packet, it checks
         its CS and PIT to find a matching name; if no match is found, the node records the interest
         in its PIT and forwards the interest to the next hop(s) towards the requested content
-        based on the information in its FIB.</t>
+        based on the information in its FIB. There exist alternative approaches which
+        aim at reducing the amount of state that a nodes must keep, up to fully PIT-less designs
+        using packets for keeping state but without changing the overall service model.</t>
     </section>
 
     <section anchor="categorized-terms" title="Terms by category">
