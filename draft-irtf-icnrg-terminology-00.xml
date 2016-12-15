@@ -77,7 +77,7 @@
       network communications are accomplished by requesting named content,
       instead of sending packets to destination addresses. This document
       provides an overview of the terminology and definitions that have been
-      used by the projects CCNx and NDN in describing this new paradigm. This document is a product
+      used in describing this new paradigm and currently covers the CCNx and NDN projects. This document is a product
       of the IRTF Information-Centric Networking Research Group (ICNRG).</t>
     </abstract>
   </front>
@@ -86,7 +86,7 @@
     <section anchor="introduction" title="Introduction">
       <t>Information-centric networking (ICN) is an approach to evolve the
         Internet infrastructure from the existing host-centric design to
-        a data-centric architecture where data access by name becomes the essential
+        a data-centric architecture where accessing data by name becomes the essential
         network primitive. The goal is to let applications refer to data independently of their location or means of
         transportation, which --for immutable data items-- enables native multicast delivery, ubiquitous
         in-network caching and replication of data objects.</t>
@@ -94,7 +94,7 @@
       <t>As the work on this topic continues to evolve, many new terms are
         born over time. The goal of this document is to provide a complete
         collection of these terms with a corresponding definition as they are
-        used in the CCNx and NDN project. Other, historic ICN projects like NetInf,
+        used in the CCNx and NDN projects. Other, historic ICN projects like NetInf,
         XIA or Mobility First are not (yet) covered.</t>
 
       <t>To help provide the context of the individual terms to be defined, in this
@@ -123,7 +123,7 @@
         return only one matching data packet.</t>
 
       <t>Packet and Content Names:</t>
-        <t>Each data packet has one or more name by which its content
+        <t>Each data packet has one or more names by which its content
         can be referenced.  Without a irrefutable binding between a
         name of a data packet and its content, data packet names
         would be useless for fetching specific content. In ICN,
@@ -138,7 +138,7 @@
         the network to validate the provenance of some ICN packet
         (=assert which key was used to sign). If a corresponding trust
         infrastructure (e.g., PKI) is in place, a packet's signature
-        even enables to assess authenticity wrt to real world
+        even enables to assess authenticity with relation to to real world
         identities. Whether a data packet's content (=payload) itself
         is encrypted or not is irrelevant for the ICN network: The use
         and the management of content encryption keys is fully in the
