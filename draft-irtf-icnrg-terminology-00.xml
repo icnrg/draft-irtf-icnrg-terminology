@@ -32,19 +32,19 @@
       </address>
     </author>
 
-    <author fullname="Lixia Zhang" initials="L." surname="Zhang">
-      <organization>UCLA</organization>
-
-      <address>
-        <email>lixia@cs.ucla.edu</email>
-      </address>
-    </author>
-
     <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
       <organization>UCLA</organization>
 
       <address>
         <email>aa@cs.ucla.edu</email>
+      </address>
+    </author>
+
+    <author fullname="Lixia Zhang" initials="L." surname="Zhang">
+      <organization>UCLA</organization>
+
+      <address>
+        <email>lixia@cs.ucla.edu</email>
       </address>
     </author>
 
@@ -107,8 +107,8 @@
     <section anchor="architecture" title="A Sketch of the Big Picture of an ICN Network Architecture">
 
       <t>In networking terms an ICN is a delivery infrastructure for
-      remote named data. A compatible distributed systems view is that
-      an ICN is a distributed lookup service. The following list
+      named data. A compatible distributed systems view is that
+      an ICN is a distributed lookup service (!?!). The following list
       describes basic ICN concepts needed to discuss the
       implementation of this service abstraction:</t>
 
@@ -124,14 +124,13 @@
 
       <t>Packet and Content Names:</t>
         <t>Each data packet has one or more names by which its content
-        can be referenced.  Without a irrefutable binding between a
+        can be referenced (!?!).  Without a irrefutable binding between a
         name of a data packet and its content, data packet names
         would be useless for fetching specific content. In ICN,
-        checking a data packet's name-content binding is achieved
-        through cryptographic means, either relying on an implicit
-        name (=cryptographic hash of the data packet) or a
+        verification of a data packet's name-to-content binding is achieved
+        through cryptographic means, either by a
         cryptographic signature that explicitely binds an
-        application-chosen name to a data packet's content.</t>
+        application-chosen name to a data packet's content, or relying on an implicit name (=cryptographic hash of the data packet) that the data consumer has obtained through a secure means.</t>
         
       <t>Data Authenticity and Encryption:</t>
         <t>Signatures carried in ICN packets enable applications and
