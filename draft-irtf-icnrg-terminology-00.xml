@@ -79,6 +79,8 @@
       provides an overview of the terminology and definitions that have been
       used in describing this new paradigm and currently covers the CCNx and NDN projects. This document is a product
       of the IRTF Information-Centric Networking Research Group (ICNRG).</t>
+      
+      <t>*** revision needed to explain the multiple approaches to ICN </t>
     </abstract>
   </front>
 
@@ -96,6 +98,8 @@
         collection of these terms with a corresponding definition as they are
         used in the CCNx and NDN projects. Other, historic ICN projects like NetInf,
         XIA or Mobility First are not (yet) covered.</t>
+
+<t>*** revision needed to explain that there exist multiple different flavors of ICN, and this draft focuses on NDN/CCN? </t>
 
       <t>To help provide the context of the individual terms to be defined, in this
         draft we first sketch the bigger picture of an ICN network, introducing
@@ -195,9 +199,10 @@
 
           <!--<t>Location-independence (?)</t>[LZ: I’d suggest to move all location/identifier related stuff into one place, which is not here]-->
 
-          <t>Data packet immutability: after a data packet is created, it cannot change. When content carried in the data packet is mutable, versioning should be used, so each version is uniquely identified. This allows disambiguation of coordination in distributed ICN networks that may not be always connected.</t>
+          <t>Data packet immutability: after a data packet is created, it cannot change. If the content carried in the data packet is mutable, versioning should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.</t>
         </list></t>
       </section>
+      
       <section anchor="naming" title="Data naming related terms">
         <t><list>
           <t>Name (aka data name, interest name, content name): a unique identifier of the data packet. ICN name is expressive, flexible, and can be application-specific (akin HTTP URL), a name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), service name, etc.</t>
