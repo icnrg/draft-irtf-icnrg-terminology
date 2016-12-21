@@ -134,8 +134,7 @@
         return only one matching data packet.</t>
 
       <t>Packet and Content Names:</t>
-        <t>Each data packet has one or more names by which its content
-        can be referenced (!?!).  Without a irrefutable binding between a
+        <t>Without a irrefutable binding between a
         name of a data packet and its content, data packet names
         would be useless for fetching specific content. In ICN,
         verification of a data packet's name-to-content binding is achieved
@@ -220,7 +219,8 @@
 
           <t>Full Name: ... AA+LZ, adressing Marc's comment #9</t>
 
-          <t>Restrictor, selector: ... </t>
+          <t>Restrictor, selector: ... Depending on the style, some restrictors show up as name components or as explicit fields of an interest. Selectors are not 'names' in a proper sense although they are able "to name content" ... nameless objects ... publisher restriction ... In that sense, a single data packet will have multiple 'name-like properties' through which it can be referenced, interest packets are able to express them.
+(This was previously "Each data packet has one or more names by which its content can be referenced (!?!)".</t>
 
           <t>Nonce: ... transiently 'names' an interest instance</t>
 
