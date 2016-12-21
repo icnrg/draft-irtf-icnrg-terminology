@@ -111,8 +111,9 @@
     <section anchor="architecture" title="A Sketch of the Big Picture of an ICN Network Architecture">
 
       <t>In networking terms an ICN is a delivery infrastructure for
-      named data. A compatible distributed systems view is that
-      an ICN is a distributed lookup service (!?!). The following list
+      named data. For other, complementing views see
+      <xref target="semantics-and-usage" />.
+      The following list
       describes basic ICN concepts needed to discuss the
       implementation of this service abstraction:</t>
 
@@ -358,6 +359,47 @@
         <t>Sessionless</t>
         </list></t>
       </section>
+    </section>
+
+    <section anchor="semantics-and-usage" title="Semantics and Usage">
+
+      <t>The terminology described above is the manifestation of
+      intended semantics of NDN and CCNx operations (what do we expect
+      the network to do?). In this section we summarize the most
+      commonly proposed use cases and interpretations.</t>
+
+      <section title="Data Transfer">
+        <t>The networking view of NDN and CCNx is that the request/reply
+        protocol implements a basic, unreliable data transfer service
+        for single, named packets.</t>
+      </section>
+
+      <section title="Data Transport">
+        <t>Data transfer can be turned into a data transport service for
+        application-level objects by additional logic. This transport logic
+        must understand and constructs the series of names needed to
+        reassemble the segmented object. Various flavors of transport
+        can be envisaged (reliable, streaming, mailbox, etc)</t>
+      </section>
+
+      <section title="Lookup Service">
+        <t>A more distributed systems view of the basic request/reply protocol
+        is that NDN and CCNx provide a distributed lookup service:
+        Given a key value (=name), the service will return the corresponding
+        value.</t>
+      </section>
+
+      <section title="Database Access">
+        <t>The lookup service turns into a database access protocol by
+        ... namespace design ... prefix standing for a collection ... The
+        DB query expression must be encoded as a name.</t>
+      </section>
+
+      <section title="Remote Procedure Call">
+        <t>More generally, ... parameters in the interest ... used e.g.
+        as command channel for remote control of neighbor routers.</t>
+      </section>
+
     </section>
 
   </middle>
@@ -621,7 +663,7 @@
     </references>
 
     <section anchor="acknowledgements" title="Acknowledgments">
-      <t>The authors would like to thank Christian Tschudin for providing suggestions on the structure of the document and some of the ICN related terms.</t>
+      <t>Mark Mosco, ...</t>
     </section>
   </back>
 </rfc>
