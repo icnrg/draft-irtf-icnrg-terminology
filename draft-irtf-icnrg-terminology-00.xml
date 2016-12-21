@@ -204,7 +204,7 @@
         </list></t>
       </section>
       
-      <section anchor="naming" title="Data naming related terms">
+      <section anchor="name-types" title="Terms related to Name Types">
         <t><list>
           <t>Name (aka data name, interest name, content name): a unique identifier of the data packet. ICN name is expressive, flexible, and can be application-specific (akin HTTP URL), a name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), service name, etc.</t>
 
@@ -212,7 +212,19 @@
 
           <t>Packet ID: a unique cryptographic identifier for a data packet. Typically, this is the cryptographic hash digest of a data packet, including its name, payload, meta information, and signature.</t>
 
-          <t>Naming scheme (ICN naming scheme): a convention/agreement/specification for the data packet naming.</t>
+          <t>Complete Name: ... </t>
+
+          <t>Restrictor, selector: ... </t>
+
+          <t>Nonce: ... transiently 'names' an interest instance</t>
+
+          <!-- Naming scalability (?)  [LZ: probably a confusion with routing scalability] -->
+        </list></t>
+      </section>
+
+      <section anchor="name-usage" title="Terms related to Name Usage">
+        <t><list>
+          <t>Naming scheme (ICN naming scheme): a convention/agreement/specification for the data packet naming. Structures a name space.</t>
 
           <t>Hierarchically structured naming (same as hierarchical naming, structured naming): the naming scheme that assigns and interprets name as a sequence of labels (name components) with hierarchical structure. A structure provides useful context information for the name.
             <!-- Name or parts of it can be “human-readable” to ease human interaction, but a hierarchical name is ultimately a sequence of ICN node interpretable name components. -->
@@ -226,16 +238,15 @@
 
           <!-- <t>Information Identifiers (?):</t> <t>Location prefix (?):</t> [LZ: I commented these out, to minimize confusions-->
 
-          <t>Segmentation (same as chunking): a process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured name, each created data packet has a common prefix and additional component representing the segment (chunk) number.</t>
+          <t>Segmentation (NDN), same as Chunking (CCNx): a process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured name, each created data packet has a common prefix and additional component representing the segment (chunk) number.</t>
 
           <t>Versioning: a process of assigning a unique name to the revision of the content carried in the data packet. When using a hierarchically structured name, the version of the data packet can be carried in a dedicated name component (e.g., prefix identifies data, unique version component identifies the revision of the data).</t>
 
           <t>Fragmentation: a process of splitting large data packets into smaller pieces so that they can be transmitted over the link with a smaller MTU size.</t>
-
-          <!-- Naming scalability (?)  [LZ: probably a confusion with routing scalability] -->
         </list></t>
       </section>
-      <section anchor="security" title="Data-Centric Security related terms">
+
+      <section anchor="security" title="Terms related to Data-Centric Security">
         <t><list>
           <t>Directly secured data packet: a data packet with inherent security properties (authenticity and optionally confidentiality), i.e., the security properties stay with the data packet regardless where it is stored and how it is retrieved.</t>
 
