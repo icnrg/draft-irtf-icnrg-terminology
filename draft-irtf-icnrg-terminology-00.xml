@@ -212,7 +212,7 @@
 
           <t>Packet ID: a unique cryptographic identifier for a data packet. Typically, this is the cryptographic hash digest of a data packet, including its name, payload, meta information, and signature.</t>
 
-          <t>Complete Name: ... </t>
+          <t>Full Name: ... AA+LZ, adressing Marc's comment #9</t>
 
           <t>Restrictor, selector: ... </t>
 
@@ -235,6 +235,8 @@
           <t>Name component (same as name segment): a sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.</t>
 
           <t>Name prefix: a sequence of name components from the beginning of a hierarchically structured name.</t>
+
+          <t>Implicit Name Component (NDN): ... AA+LZ, adressing Marc's comment #9</t>
 
           <!-- <t>Information Identifiers (?):</t> <t>Location prefix (?):</t> [LZ: I commented these out, to minimize confusions-->
 
