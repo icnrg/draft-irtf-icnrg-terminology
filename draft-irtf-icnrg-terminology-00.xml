@@ -117,6 +117,12 @@
       describes basic ICN concepts needed to discuss the
       implementation of this service abstraction:</t>
 
+      <t>Packet (PDU) vs Frame:</t>
+      <t>NDN and CCN introduce Protocol Data Units (PDUs) which typically
+      are larger than the maximum transmission unit of the underlying networking
+      technology. We call the former a 'packet' for the purpose of ICN
+      and the latter a 'frame'.</t>
+
       <t>Request-Reply Protocol (Interest and Data Packet):</t>
         <t>An ICN's lookup service is implemented by defining two
         types of network packet formats: Interest packets that request
@@ -244,7 +250,7 @@
 
           <t>Versioning: a process of assigning a unique name to the revision of the content carried in the data packet. When using a hierarchically structured name, the version of the data packet can be carried in a dedicated name component (e.g., prefix identifies data, unique version component identifies the revision of the data).</t>
 
-          <t>Fragmentation: a process of splitting large data packets into smaller pieces so that they can be transmitted over the link with a smaller MTU size.</t>
+          <t>Fragmentation: a process of splitting an NDN or CCN data packets into frames so that they can be transmitted over the link with a smaller MTU size.</t>
         </list></t>
       </section>
 
