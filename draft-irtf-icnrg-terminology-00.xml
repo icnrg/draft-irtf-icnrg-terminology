@@ -211,15 +211,15 @@
       
       <section anchor="name-types" title="Terms related to Name Types">
         <t><list>
-          <t>Name (aka data name, interest name, content name): a unique identifier of the data packet. ICN name is expressive, flexible, and can be application-specific (akin HTTP URL), a name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), service name, etc.</t>
+          <t>Name (aka data name, interest name, content name): a unique identifier of the data packet. An ICN name is expressive, flexible and can be application-specific (akin HTTP URL). A Name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), a service name, etc.</t>
 
-          <t>Self-certifying name: a special type of data name that uses a packet ID as data name or uses a packet ID as part of the name</t>
+          <t>Self-certifying name: a special type of data name that uses a packet ID as data name or uses a packet ID as part of the name.</t>
 
           <t>Packet ID: a unique cryptographic identifier for a data packet. Typically, this is the cryptographic hash digest of a data packet, including its name, payload, meta information, and signature.</t>
 
           <t>Full Name: ... AA+LZ, adressing Marc's comment #9</t>
 
-          <t>Restrictor, selector: ... Depending on the style, some restrictors show up as name components or as explicit fields of an interest. Selectors are not 'names' in a proper sense although they are able "to name content" ... nameless objects ... publisher restriction ... In that sense, a single data packet will have multiple 'name-like properties' through which it can be referenced, interest packets are able to express them.
+          <t>Restrictor, selector: ... Depending on the implementation, some restrictors show up as name components or as explicit fields of an interest. Selectors are not 'names' in a proper sense although they are able to "name content" ... nameless objects ... publisher restriction ... In that sense, a single data packet will have multiple 'name-like properties' through which it can be referenced, interest packets are able to express them.
 (This was previously "Each data packet has one or more names by which its content can be referenced (!?!)".</t>
 
           <t>Nonce: ... transiently 'names' an interest instance</t>
@@ -238,7 +238,7 @@
 
           <t>Flat naming: the naming scheme that assigns and interprets name as a single label (name component) without any internal structure. This can be considered a special (or degenerated) case of structured names. </t>
 
-          <t>Name component (same as name segment): a sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.</t>
+          <t>Name component (NDN) (same as name segment (CCN)): a sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.</t>
 
           <t>Name prefix: a sequence of name components from the beginning of a hierarchically structured name.</t>
 
@@ -248,9 +248,10 @@
 
           <t>Segmentation (NDN), same as Chunking (CCNx): a process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured name, each created data packet has a common prefix and additional component representing the segment (chunk) number.</t>
 
-          <t>Versioning: a process of assigning a unique name to the revision of the content carried in the data packet. When using a hierarchically structured name, the version of the data packet can be carried in a dedicated name component (e.g., prefix identifies data, unique version component identifies the revision of the data).</t>
+          <t>Versioning: a process of assigning a unique name to the revision of the content carried in the data packet. When using a hierarchically structured name, the version of the data packet can be carried in a dedicated name component (e.g., prefix identifies data, unique version component identifies the revision of the data).</t> <!-- What would be the difference when putting the version before the segment number? Is
+          one then versioning individual segments instead of application layer content? -->
 
-          <t>Fragmentation: a process of splitting an NDN or CCN data packets into frames so that they can be transmitted over the link with a smaller MTU size.</t>
+          <t>Fragmentation: a process of splitting NDN or CCN data packets into frames so that they can be transmitted over the link with a smaller MTU size.</t>
         </list></t>
       </section>
 
