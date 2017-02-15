@@ -79,7 +79,7 @@
       provides an overview of the terminology and definitions that have been
       used in describing this new paradigm and currently covers the CCNx and NDN projects. This document is a product
       of the IRTF Information-Centric Networking Research Group (ICNRG).</t>
-      
+
       <t>*** revision needed to explain the multiple approaches to ICN </t>
     </abstract>
   </front>
@@ -141,7 +141,7 @@
         through cryptographic means, either by a
         cryptographic signature that explicitely binds an
         application-chosen name to a data packet's content, or relying on an implicit name (=cryptographic hash of the data packet) that the data consumer has obtained through a secure means.</t>
-        
+
       <t>Data Authenticity and Encryption:</t>
         <t>Signatures carried in ICN packets enable applications and
         the network to validate the provenance of some ICN packet
@@ -208,7 +208,7 @@
           <t>Data packet immutability: after a data packet is created, it cannot change. If the content carried in the data packet is mutable, versioning should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.</t>
         </list></t>
       </section>
-      
+
       <section anchor="name-types" title="Terms related to Name Types">
         <t><list>
           <t>Name (aka data name, interest name, content name): a unique identifier of the data packet. An ICN name is expressive, flexible and can be application-specific (akin HTTP URL). A Name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), a service name, etc.</t>
@@ -259,27 +259,28 @@
         <t><list>
           <t>Directly secured data packet: a data packet with inherent security properties (authenticity and optionally confidentiality), i.e., the security properties stay with the data packet regardless where it is stored and how it is retrieved.</t>
 
-          <t>Data authenticator (content authenticator): a set of parameters carried in the data packet that is used to verify integrity and authenticity of the data packet. The Data authenticator can include a cryptographic signature (RSA, ECDSA, HMAC, etc.), meta information about the signature (e.g., validity period), and additional information to facilitate signature verification (e.g., key locator, key ID, HMAC tag identifier, etc.)</t>
+          <t>Data authenticator (content authenticator): a set of parameters carried in the data packet that is used to verify integrity and authenticity of the data packet. The Data authenticator can include a cryptographic signature (RSA, ECDSA, HMAC, etc.),
+              meta information about the signature (e.g., validity period), and additional information to facilitate signature verification (e.g., key locator, key ID, HMAC tag identifier, etc.)</t>
 
           <t>Data confidentiality credentials: a set of parameters carried in the data packet that is used to identify how the confidential data can be decrypted by authorized consumers.</t>
 
-          <t>ICN (public) key (same as ICN certificate): a data packet that carries public key or public key certificate as payload and may have additional meta information regarding the public key (e.g., validity period, signature time, etc.). The key belongs to the ICN key owner and can be associated with it implicitly through the name or explicitly through meta information.</t>
+          <t>Key owner (same as Identity): an entity (user, device, program, program instance, module in the program instance, etc.) that owns private key(s) and the corresponding public key(s).</t>
 
-          <t>ICN key owner (same as Identity): an entity (user, device, program, program instance, module in the program instance, etc.) that owns the private key that corresponds to the ICN key.</t>
+          <t>Certificate: a data packet that carries a public key as payload with optional additional meta information regarding the key (e.g., validity period, signature time, etc.).
+              Ownership of the public key is made implicitly through the name of the packet or explicitly through meta information.</t>
+              <!-- The key belongs to the key owner and can be associated with it implicitly through the name or explicitly through meta information.</t> -->
 
-          <t>Key locator (same as ?): Parameter(s) that identify the ICN key, which can be the ICN key name, ICN key prefix, ICN key ID, etc.</t>
+          <t>Key locator: Parameter(s) that identify the ICN key, which can be the ICN key name, ICN key prefix, ICN key ID, etc.</t>
 
-          <t>ICN key ID: Packet ID of the ICN (public) key.</t>
+          <t>Key ID: Unique identifier (e.g., hash digest) for a public or secret key.</t>
 
           <t>Trust model: a model or framework that defines trust relationships, i.e., which entity (represented by an ICN key) is authorized to sign which data packets.</t>
 
-          <t>ICN key chain (certificate chain): a chain of ICN keys (certificates) wherein each key (certificate) is signed by its predecessor and the head of the chain is a trust anchor, i.e., its authenticity is assumed.</t>
-
           <t>Trust schema: a formal description of a trust model, e.g., in the form of a set of name-based relationships between data and key names and a set of the trust anchors.</t>
 
-          <!--<t>Security context</t>-->
-
           <t>Trust anchor: an ICN key that is assumed to be trusted within the context of a specific trust model.</t>
+
+          <t>ICN key chain (certificate chain): a chain of ICN keys (certificates) wherein each key (certificate) is signed by its predecessor and the head of the chain is a trust anchor, i.e., its authenticity is assumed.</t>
         </list></t>
       </section>
 
