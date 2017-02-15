@@ -261,7 +261,7 @@
 
           <t>Data authenticator (content authenticator): a set of parameters carried in the data packet that is used to verify integrity and authenticity of the data packet. The Data authenticator can include a cryptographic signature (RSA, ECDSA, HMAC, etc.), meta information about the signature (e.g., validity period), and additional information to facilitate signature verification (e.g., key locator, key ID, HMAC tag identifier, etc.)</t>
 
-          <t>Data confidentiality credentials: a set of parameters carried in the data packet that is used to identify how the confidential data can be decrypted by authorized consumers.</t>
+          <t>Data confidentiality credentials: a set of parameters carried in the data packet that identify the needed algorithm and key identifiers to decrypt the confidential data.</t>
 
           <t>ICN (public) key (same as ICN certificate): a data packet that carries public key or public key certificate as payload and may have additional meta information regarding the public key (e.g., validity period, signature time, etc.). The key belongs to the ICN key owner and can be associated with it implicitly through the name or explicitly through meta information.</t>
 
