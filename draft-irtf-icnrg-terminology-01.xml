@@ -323,8 +323,8 @@
             </list>
           </t>
 
-          <t>Data confidentiality credentials: a set of parameters carried in the data packet that is used to identify how the confidential data
-              can be decrypted by authorized consumers.</t>
+          <t>Data confidentiality credentials: a set of parameters carried in the data packet that identify the needed algorithm
+              and key identifiers to decrypt the confidential data.</t>
 
           <t>Key owner (same as Identity): an entity (user, device, program, program instance, module in the program instance, etc.) that
               owns private key(s) and the corresponding public key(s).</t>
