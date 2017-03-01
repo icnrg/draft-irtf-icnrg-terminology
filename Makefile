@@ -11,7 +11,7 @@
 # or with make command line arguments: "make PV=10 showdiff"
 
 # The default name of the Internet Draft XML file (without xml extension)
-DRAFT = draft-irtf-icnrg-terminology-00
+DRAFT = draft-irtf-icnrg-terminology-01
 # The default SVN version (Previous Version) against which a html diff is made
 PV = HEAD
 # Should use web tools for XML2RFC and RFCDIFF instead of local tools? 1 = true, 0 = false.
