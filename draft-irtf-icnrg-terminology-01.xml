@@ -115,12 +115,6 @@
       describes basic ICN concepts needed to discuss the
       implementation of this service abstraction:</t>
 
-      <t>Packet (PDU) vs Frame:</t>
-      <t>NDN and CCNx introduce Protocol Data Units (PDUs) which typically
-      are larger than the maximum transmission unit of the underlying networking
-      technology. We refer to PDUs as 'packets' and the segmented parts that
-      traverse MTU-bound links as 'frames'.</t>
-
       <t>Request-Reply Protocol (Interest and Data Packet):</t>
         <t>An ICN's lookup service is implemented by defining two
         types of network packet formats: Interest packets that request
@@ -171,10 +165,18 @@
         object name to which a different suffix is added for each
         segment. The same method can be used to handle different
         versions of an application-level object by including a version
-        number into the name of the overall object. Handling
-        link-layer technologies which lead to even smaller
-        fragmentation of ICN packets is done inside the ICN network
-        and is not visible at the service interface.
+        number into the name of the overall object.
+        </t>
+
+     <t>Packet and Frame:</t>
+        <t>NDN and CCNx introduce Protocol Data Units (PDUs) which
+        typically are larger than the maximum transmission unit of the
+        underlying networking technology. We refer to PDUs as
+        'packets' and the (potentially fragmented) packet parts that
+        traverse MTU-bound links as 'frames'.  Handling link-layer
+        technologies which lead to fragmentation of ICN packets is
+        done inside the ICN network and is not visible at the service
+        interface.
         </t>
 
       <t>ICN Node:</t>
