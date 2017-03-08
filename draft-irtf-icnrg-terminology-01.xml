@@ -412,7 +412,9 @@
              </list>
           </t>
 
-          <t>Data Mule: an ICN entity that carries an interest or data packet before forwarding it to next ICN entity.</t>
+          <t>Data Mule: an ICN entity that temporarily stores and
+          potentially carries an interest or data packet before
+          forwarding it to next ICN entity.</t>
         </list></t>
       </section>
 
