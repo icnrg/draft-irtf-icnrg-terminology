@@ -437,9 +437,9 @@
               interfaces to where Interests were forwarded, and information to assess data plane
               performance. Interests for the same data are aggregated into a single PIT entry.</t>
 
-          <t>ICN Routing plane: an ICN protocol or a set of ICN protocols to exchange information about data packet availability.</t>
+          <t>ICN Routing plane: an ICN protocol or a set of ICN protocols to exchange information about name space reachability.</t>
 
-          <t>Satisfying an Interest: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
+          <t>Reverse path forwarding: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
 
           <t>Interest forwarding strategy: a module of the ICN stateful forwarding
               (ICN data) plane that implements a decision on where/how to forward the incoming interest packet. The
@@ -449,6 +449,11 @@
               <t>Common aliases include: forwarding strategy.</t>
           </list>
           </t>
+
+          <t>Satisfying an interest: overall process of returning content
+          that satisfies the constraints imposed by the Interest, most notably
+          a match in the provided name. Four different flavors of "matching" are
+          used in an ICN network, as described below.</t>
 
           <t>Interest match in FIB (longest prefix match): a process of finding a FIB entry with the longest name (in terms of name components) that is a prefix of the specified name.</t>
 
