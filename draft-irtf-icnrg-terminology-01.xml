@@ -359,7 +359,9 @@
               Ownership of the public key is made implicitly through the name of the packet or explicitly through meta information.</t>
               <!-- The key belongs to the key owner and can be associated with it implicitly through the name or explicitly through meta information.</t> -->
 
-          <t>Key locator: Parameter(s) that identify the ICN key, which can be the ICN key name, ICN key prefix, ICN key ID, etc.</t>
+          <t>Key locator: Parameter(s) that identify the ICN key. A key
+          locatore can be the ICN key's name, its prefix, the ICN key ID,
+          etc.</t>
 
           <t>Key ID: Unique identifier (e.g., hash digest) for a public or secret key.</t>
 
