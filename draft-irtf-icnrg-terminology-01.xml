@@ -292,7 +292,7 @@
           </t>
 
            <!-- caw: this is misplaced a nonce has nothing to do with names -->
-           <t>Nonce: ... transiently 'names' an interest instance</t>
+           <t>Nonce: Field of an interest packet that transiently 'names' an interest instance.</t>
 
           <!-- Naming scalability (?)  [LZ: probably a confusion with routing scalability] -->
         </list></t>
