@@ -63,7 +63,7 @@
       </address>
     </author>
 
-    <date month="February" year="2017"/>
+    <date month="March" year="2017"/>
 
     <area>General</area>
 
@@ -110,16 +110,26 @@
 
       <t>In networking terms, an ICN is a delivery infrastructure for
       named data. For other, complementing views see
-      <xref target="semantics-and-usage" />.
-      The following list
-      describes basic ICN concepts needed to discuss the
-      implementation of this service abstraction:</t>
+      <xref target="semantics-and-usage" />.</t>
 
-      <t>Packet (PDU) vs Frame:</t>
-      <t>NDN and CCNx introduce Protocol Data Units (PDUs) which typically
-      are larger than the maximum transmission unit of the underlying networking
-      technology. We refer to PDUs as 'packets' and the segmented parts that
-      traverse MTU-bound links as 'frames'.</t>
+      <figure title="Request-Reply Protocol of ICN networking. Legend: n=name, c=content, s=signature."
+              anchor="i-d-protocol"><artwork><![CDATA[
+    requestor         zero or more           data sources or
+    (node)          forwarding nodes         replica nodes
+      |                 | ... |                  |...|
+      |   Interest(n)   |     |   Interest(n)    |   |
+      | --------------> |     | ---------------> |   |
+      |                 |     | -------------------> |
+      |                 |     |                  |   |
+      |                 |     |  Data([n],c,[s]) |   |
+      |                 |     | <--------------- |   |
+      |                 |     | <------------------- |
+      | Data([n],c,[s]) |     |                  |   |
+      | <-------------- |     |                  |   |
+]]></artwork></figure>
+
+      <t>The following list describes basic ICN concepts needed to
+      discuss the implementation of this service abstraction.</t>
 
       <t>Request-Reply Protocol (Interest and Data Packet):</t>
         <t>An ICN's lookup service is implemented by defining two
@@ -171,10 +181,18 @@
         object name to which a different suffix is added for each
         segment. The same method can be used to handle different
         versions of an application-level object by including a version
-        number into the name of the overall object. Handling
-        link-layer technologies which lead to even smaller
-        fragmentation of ICN packets is done inside the ICN network
-        and is not visible at the service interface.
+        number into the name of the overall object.
+        </t>
+
+     <t>Packet and Frame:</t>
+        <t>NDN and CCNx introduce Protocol Data Units (PDUs) which
+        typically are larger than the maximum transmission unit of the
+        underlying networking technology. We refer to PDUs as
+        'packets' and the (potentially fragmented) packet parts that
+        traverse MTU-bound links as 'frames'.  Handling link-layer
+        technologies which lead to fragmentation of ICN packets is
+        done inside the ICN network and is not visible at the service
+        interface.
         </t>
 
       <t>ICN Node:</t>
@@ -184,6 +202,14 @@
         also behave like a packet mule, that is it may carry an interest or data packet over
         some distance before forwarding it to next node. An ICN node may also run routing
         protocols to assist its interest forwarding decisions.</t>
+
+        <figure title="Structure of an ICN forwarding node."
+                anchor="fwd-node"><artwork><![CDATA[
+
+                   --> add ASCII art here
+                   (of a forwarding node
+                   and its PIT, FIB, CS)
+]]></artwork></figure>
 
         <!-- caw: I removed the forwarding plane here since it can be stateful or stateless -->
       <t>Forwarding Plane:</t>
@@ -266,7 +292,7 @@
           </t>
 
            <!-- caw: this is misplaced a nonce has nothing to do with names -->
-           <t>Nonce: ... transiently 'names' an interest instance</t>
+           <t>Nonce: Field of an interest packet that transiently 'names' an interest instance.</t>
 
           <!-- Naming scalability (?)  [LZ: probably a confusion with routing scalability] -->
         </list></t>
@@ -333,7 +359,9 @@
               Ownership of the public key is made implicitly through the name of the packet or explicitly through meta information.</t>
               <!-- The key belongs to the key owner and can be associated with it implicitly through the name or explicitly through meta information.</t> -->
 
-          <t>Key locator: Parameter(s) that identify the ICN key, which can be the ICN key name, ICN key prefix, ICN key ID, etc.</t>
+          <t>Key locator: Parameter(s) that identify the ICN key. A key
+          locatore can be the ICN key's name, its prefix, the ICN key ID,
+          etc.</t>
 
           <t>Key ID: Unique identifier (e.g., hash digest) for a public or secret key.</t>
 
@@ -384,7 +412,9 @@
              </list>
           </t>
 
-          <t>Data Mule: an ICN entity that carries an interest or data packet before forwarding it to next ICN entity.</t>
+          <t>Data Mule: an ICN entity that temporarily stores and
+          potentially carries an interest or data packet before
+          forwarding it to next ICN entity.</t>
         </list></t>
       </section>
 
@@ -407,9 +437,9 @@
               interfaces to where Interests were forwarded, and information to assess data plane
               performance. Interests for the same data are aggregated into a single PIT entry.</t>
 
-          <t>ICN Routing plane: an ICN protocol or a set of ICN protocols to exchange information about data packet availability.</t>
+          <t>ICN Routing plane: an ICN protocol or a set of ICN protocols to exchange information about name space reachability.</t>
 
-          <t>Satisfying an Interest: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
+          <t>Reverse path forwarding: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
 
           <t>Interest forwarding strategy: a module of the ICN stateful forwarding
               (ICN data) plane that implements a decision on where/how to forward the incoming interest packet. The
@@ -419,6 +449,11 @@
               <t>Common aliases include: forwarding strategy.</t>
           </list>
           </t>
+
+          <t>Satisfying an interest: overall process of returning content
+          that satisfies the constraints imposed by the Interest, most notably
+          a match in the provided name. Four different flavors of "matching" are
+          used in an ICN network, as described below.</t>
 
           <t>Interest match in FIB (longest prefix match): a process of finding a FIB entry with the longest name (in terms of name components) that is a prefix of the specified name.</t>
 
