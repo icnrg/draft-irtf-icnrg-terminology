@@ -15,11 +15,35 @@
   <front>
     <title abbrev="ICN Terminology">Information-Centric Networking (ICN): Terminology</title>
 
+    <author fullname="Bastiaan Wissingh" initials="B.F." surname="Wissingh">
+      <organization>TNO</organization>
+
+      <address>
+        <email>bastiaan.wissingh@tno.nl</email>
+      </address>
+    </author>
+
+    <author fullname="Christopher A. Wood" initials="C." surname="Wood">
+      <organization>University of California Irvine</organization>
+
+      <address>
+        <email>woodc1@uci.edu</email>
+      </address>
+    </author>
+
     <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
       <organization>UCLA</organization>
 
       <address>
         <email>aa@cs.ucla.edu</email>
+      </address>
+    </author>
+
+    <author fullname="Lixia Zhang" initials="L." surname="Zhang">
+      <organization>UCLA</organization>
+
+      <address>
+        <email>lixia@cs.ucla.edu</email>
       </address>
     </author>
 
@@ -39,30 +63,6 @@
       </address>
     </author>
 
-    <author fullname="Bastiaan Wissingh" initials="B.F." surname="Wissingh">
-      <organization>TNO</organization>
-
-      <address>
-        <email>bastiaan.wissingh@tno.nl</email>
-      </address>
-    </author>
-
-    <author fullname="Christopher A. Wood" initials="C." surname="Wood">
-      <organization>University of California Irvine</organization>
-
-      <address>
-        <email>woodc1@uci.edu</email>
-      </address>
-    </author>
-
-    <author fullname="Lixia Zhang" initials="L." surname="Zhang">
-      <organization>UCLA</organization>
-
-      <address>
-        <email>lixia@cs.ucla.edu</email>
-      </address>
-    </author>
-
     <date month="March" year="2017"/>
 
     <area>General</area>
@@ -75,7 +75,7 @@
       <t>Information Centric Networking (ICN) is a new paradigm where
       network communications are accomplished by requesting named content,
       instead of sending packets to destination addresses. Named Data Networking (NDN)
-      and Content-Centric Networking (CCNx) are two prominent ICN architectures.
+      and Content-Centric Networking (CCN) are two prominent ICN architectures.
       This document provides an overview of the terminology and
       definitions that have been used in describing concepts in these two projects.
       While there are other ICN architectures, they are not part of the NDN and CCN 
@@ -93,14 +93,14 @@
         in-network caching and replication of data objects.</t>
 
       <t>As the work on this topic continues to evolve, many new terms are
-        emerge over time. The goal of this document is to provide a thorough
+        emerging over time. The goal of this document is to provide a thorough
         collection of these terms with a corresponding definition as they are
         used in the CCNx and NDN projects. Other, historic ICN projects like NetInf, XIA or Mobility First
         are not covered and will be the subject of other documents.</t>
 
-      <t>To help provide the context of the individual terms to be defined, in this
-        draft we first sketch the bigger picture of an ICN network, introducing
-        the basic concepts and identifying the major components in the
+      <t>To help provide context for the individual terms to be defined, in this
+        draft we first sketch the bigger picture of an ICN network by introducing
+        the basic concepts and identifying the major components of the
         architecture in section 2 after which in section 3 ICN related terms
         are listed by different categories.</t>
     </section>
@@ -127,7 +127,7 @@
       | <-------------- |     |                  |   |
 ]]></artwork></figure>
 
-      <t>The following list describes basic ICN concepts needed to
+      <t>The following list describes the basic ICN concepts needed to
       discuss the implementation of this service abstraction.</t>
 
       <t>Request-Reply Protocol (Interest and Data Packet):</t>
@@ -152,11 +152,11 @@
         consumer obtained through other means.</t>
 
       <t>Data Authenticity and Encryption:</t>
-        <t>Any data consumers and network element can validate the authenticity of
+        <t>Any data consumer and network element can validate the authenticity of
             a data packet by verifying its cryptographic name-to-content binding.
             In contrast, whether a data packet's content (payload) itself
             is encrypted or not is irrelevant to the ICN network: The use
-            and the management of content encryption keys is an application-layer
+            and management of content encryption keys is an application-layer
             concern.
         </t>
 
@@ -184,7 +184,7 @@
         </t>
 
      <t>Packet and Frame:</t>
-        <t>NDN and CCNx introduce Protocol Data Units (PDUs) which
+        <t>NDN and CCN introduce Protocol Data Units (PDUs) which
         typically are larger than the maximum transmission unit of the
         underlying networking technology. We refer to PDUs as
         'packets' and the (potentially fragmented) packet parts that
@@ -198,8 +198,8 @@
       <t>A node within an ICN network can fulfill the role of a data producer, a data consumer,
         and/or a forwarder for interest and data packets. When a forwarder has connectivity
         to neighbor nodes, it performs interest and data packet forwarding in real time. It can
-        also behave like a packet mule, that is it may carry an interest or data packet over
-        some distance before forwarding it to next node. An ICN node may also run routing
+        also behave like a packet mule, that is it may carry an interest or data packet for some
+        time before forwarding it to next node. An ICN node may also run routing
         protocols to assist its interest forwarding decisions.</t>
 
         <figure title="Structure of an ICN forwarding node."
@@ -212,11 +212,11 @@
 
         <!-- caw: I removed the forwarding plane here since it can be stateful or stateless -->
       <t>Forwarding Plane:</t>
-      <t>The canonical way of implementing packet forwarding in an ICN network like NDN and CCNx
+      <t>The canonical way of implementing packet forwarding in an ICN network like NDN and CCN
         relies on three data structures that capture a node's state: a Forwarding Interest
         Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes
         interest forwarding strategies which takes input from both FIB and measurements to make
-        interest forwarding decisions.  When a node receives an ICN interest packet, it checks
+        interest forwarding decisions. When a node receives an ICN interest packet, it checks
         its CS and PIT to find a matching name; if no match is found, the node records the interest
         in its PIT and forwards the interest to the next hop(s) towards the requested content
         based on the information in its FIB. There exist alternative approaches which
@@ -229,19 +229,19 @@
       <section title="Generic terms">
         <t><list>
           <t>Information-Centric Networking (ICN): a networking architecture that retrieves data packets as response to interest packets.
-             Content-Centric Networking (CCNx) and Named Data Networking (NDN) are two types of ICN architectures.
+             Content-Centric Networking (CCN) and Named Data Networking (NDN) are two types of ICN architectures.
           </t>
 
           <t>Data packet: a network-level packet that carries payload, uniquely identified by a name, and is directly secured.
               <list style="empty">
-                  <t>Common aliases include: data, data object, content object packet, data message, named data object, named data.</t>
+                  <t>Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.</t>
             </list>
           </t>
 
           <t>Interest packet: a network-level packet that expresses the request for a data
               packet using either an exact name or a name prefix. An interest packet may optionally carry a set of additional
               restrictions (e.g. interest selectors). An interest may  be associated with additional information to facilitate
-              forwarding and can include interest lifetime, hop limit, forwarding hints, labels, etc.  In different ICN designs,
+              forwarding and can include interest lifetime, hop limit, forwarding hints, labels, etc. In different ICN designs,
               the set of additional associated information may vary.
               <list style="empty">
               <t>Common aliases include: interest, interest message, information request</t>
@@ -268,7 +268,7 @@
 
           <t>Name component: a sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.
               <list style="empty">
-              <t>Common aliases include: name segment (as in CCNx).</t>
+              <t>Common aliases include: name segment (as in CCN).</t>
           </list>
           </t>
 
@@ -317,7 +317,7 @@
               When using hierarchically structured name, each created data packet has a common prefix and additional
               component representing the segment (chunk) number.
               <list style="empty">
-              <t>Common aliases include: chunking (as in CCNx).</t>
+              <t>Common aliases include: chunking (as in CCN).</t>
           </list>
           </t>
 
@@ -533,12 +533,12 @@
     <section anchor="semantics-and-usage" title="Semantics and Usage">
 
       <t>The terminology described above is the manifestation of
-      intended semantics of NDN and CCNx operations (what do we expect
+      intended semantics of NDN and CCN operations (what do we expect
       the network to do?). In this section we summarize the most
       commonly proposed use cases and interpretations.</t>
 
       <section title="Data Transfer">
-        <t>The networking view of NDN and CCNx is that the request/reply
+        <t>The networking view of NDN and CCN is that the request/reply
         protocol implements a basic, unreliable data transfer service
         for single, named packets.</t>
       </section>
@@ -546,14 +546,14 @@
       <section title="Data Transport">
         <t>Data transfer can be turned into a data transport service for
         application-level objects by additional logic. This transport logic
-        must understand and constructs the series of names needed to
+        must understand and construct the series of names needed to
         reassemble the segmented object. Various flavors of transport
         can be envisaged (reliable, streaming, mailbox, etc)</t>
       </section>
 
       <section title="Lookup Service">
         <t>A more distributed systems view of the basic request/reply protocol
-        is that NDN and CCNx provide a distributed lookup service:
+        is that NDN and CCN provide a distributed lookup service:
         Given a key value (=name), the service will return the corresponding
         value.</t>
       </section>
