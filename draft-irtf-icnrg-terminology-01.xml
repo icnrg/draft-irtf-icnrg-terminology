@@ -13,7 +13,7 @@
 <?rfc text-list-symbols="-o*+"?>
 <rfc category="info" docName="draft-wissingh-icnrg-terminology-01">
   <front>
-    <title abbrev="ICN Terminology">Community Information-Centric Networking (CICN): Terminology</title>
+    <title abbrev="ICN Terminology">Information-Centric Networking (ICN): Terminology</title>
 
     <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
       <organization>UCLA</organization>
@@ -74,11 +74,11 @@
     <abstract>
       <t>Information Centric Networking (ICN) is a new paradigm where
       network communications are accomplished by requesting named content,
-      instead of sending packets to destination addresses. The Community
-      ICN (CICN) project represents the harmonization of the NDN and
-      CCNx projects. This document provides an overview of the terminology and
+      instead of sending packets to destination addresses. Named Data Networking (NDN)
+      and Content-Centric Networking (CCNx) are two prominent ICN architectures.
+      This document provides an overview of the terminology and
       definitions that have been used in describing concepts in these two projects.
-      While there are other ICN architectures, they are not part of the CICN
+      While there are other ICN architectures, they are not part of the NDN and CCN 
       vision and as such are out of scope for this document.</t>
     </abstract>
   </front>
@@ -95,8 +95,7 @@
       <t>As the work on this topic continues to evolve, many new terms are
         emerge over time. The goal of this document is to provide a thorough
         collection of these terms with a corresponding definition as they are
-        used in the CCNx, NDN, and, ultimately, the joint Community ICN (CICN)
-        projects. Other, historic ICN projects like NetInf, XIA or Mobility First
+        used in the CCNx and NDN projects. Other, historic ICN projects like NetInf, XIA or Mobility First
         are not covered and will be the subject of other documents.</t>
 
       <t>To help provide the context of the individual terms to be defined, in this
@@ -230,8 +229,8 @@
       <section title="Generic terms">
         <t><list>
           <t>Information-Centric Networking (ICN): a networking architecture that retrieves data packets as response to interest packets.
-             Content-Centric Networking (CCNx) and Named Data Networking (NDN) are two types of ICN architectures. Community ICN (CICN) is
-             a Linux Foundation project that represents the harmonization of the NDN and CCNx projects.</t>
+             Content-Centric Networking (CCNx) and Named Data Networking (NDN) are two types of ICN architectures.
+          </t>
 
           <t>Data packet: a network-level packet that carries payload, uniquely identified by a name, and is directly secured.
               <list style="empty">
