@@ -466,7 +466,7 @@
 
           <t>Interest match in CS (any match): a process of finding an entry in router’s content store that can satisfy the specified interest.</t>
 
-          <t>ICN Forwarding Information Base (FIB): a database that, for a set of prefixes, records a list of interfaces that can be used to retrieve data packets with names under the corresponding prefixes. The list of interfaces for each prefix can be ranked, and prefix/interfaces mapping, and interfaces can be associated with the additional information to facilitate forwarding strategy decisions.</t>
+          <t>Forwarding Information Base (FIB): a database that contains a set of prefixes, each prefix associated with one or more faces that can be used to retrieve data packets with names under the corresponding prefix. The list of faces for each prefix can be ranked, and each face may be associated with additional information to facilitate forwarding strategy decisions.</t>
 
          <t>Interest Nack: a packet that contains the interest packet and optional annotation,
               which is sent by the router to the interface(s) the Interest was received from. Interest Nack is used to inform downstream
@@ -492,7 +492,7 @@
 
            <t>ICN Routing plane: an ICN protocol or a set of ICN protocols to exchange information about name space reachability.</t>
            
-           <t>ICN Routing Information Base (RIB): a database that records a set of prefix-interface mappings that represent a candidate interface through which a data packet with the specified prefix can be retrieved. RIB can be used to populate FIB.</t>
+           <t>ICN Routing Information Base (RIB): a database that contains a set of prefix-face mappings that are produced by running one or multiple routing protocols. RIB is used to populate FIB.</t>
 
            <!--<t>Off-path caching:</t>
         <t></t>-->
