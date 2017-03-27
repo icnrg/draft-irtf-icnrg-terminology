@@ -428,28 +428,21 @@
                 </list>
           </t>
 
-          <t>Interest forwarding: a process of forwarding interest packets using the names carried in the interests.</t>
+          <t>Interest forwarding: a process of forwarding interest packets using the names carried in the interests, creating an entry in PIT.  The forwarding decision is made by the Forwarding Strategy.</t>
 
-          <t>ICN Pending Interest Table (PIT): a database that records received and not yet satisfied
+          <t>Pending Interest Table (PIT): a database that records received and not yet satisfied
               interests with the interfaces from where they were received. The PIT can also store
               interfaces to where Interests were forwarded, and information to assess data plane
               performance. Interests for the same data are aggregated into a single PIT entry.</t>
-
-          <t>Data forwarding: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
 
           <t>Forwarding strategy: a module of the ICN stateful forwarding
               (ICN data) plane that implements a decision on where/how to forward the incoming interest packet. The
               forwarding strategy can take input from ICN Forwarding Information Base (FIB), measured data plane
               performance parameters, and/or use other mechanisms to make the decision.
               <list style="empty">
-<!--              <t>Common aliases include: forwarding strategy.</t> -->
+              <t>Common aliases include: Interest forwarding strategy.</t> 
           </list>
           </t>
-
-          <t>Satisfying an interest: overall process of returning content
-          that satisfies the constraints imposed by the Interest, most notably
-          a match in the provided name. Four different flavors of "matching" are
-          used in an ICN network, as described below.</t>
 
           <t>Interest match in FIB (longest prefix match): a process of finding a FIB entry with the longest name (in terms of name components) that is a prefix of the specified name.</t>
 
@@ -462,7 +455,14 @@
           </list>
           </t>
 
-          <t>Data match in PIT (all match): a process of finding (a set of) PIT entries that can be satisfied with the specified data packet.</t>
+          <t>Data forwarding: a process of forwarding the incoming data packet to the incoming interface(s) recorded in the corresponding PIT entry (entries) and removing the PIT entry (entries).</t>
+
+         <t>Satisfying an interest: overall process of returning content
+          that satisfies the constraints imposed by the Interest, most notably
+          a match in the provided name. Four different flavors of "matching" are
+          used in an ICN network, as described below.</t>
+
+         <t>Data match in PIT (all match): a process of finding (a set of) PIT entries that can be satisfied with the specified data packet.</t>
 
           <t>Interest match in CS (any match): a process of finding an entry in router’s content store that can satisfy the specified interest.</t>
 
