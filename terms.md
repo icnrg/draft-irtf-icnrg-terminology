@@ -102,6 +102,18 @@
 
 > a process of splitting data packets into frames so that they can be transmitted over the link with a smaller MTU size.
 
+## Terms related to Packet Types
+
+**Link**:
+
+> a type of Data packet whose body contains the Name of another Data packet. This inner Name is often a Full Name, i.e., it specifies the Packet ID of the corresponding Data packet, but this is not a requirement.
+
+  >> Common aliases include: pointer.
+
+**Manifest**:
+
+> a type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. This has additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all data contained in the linked Data packets.
+
 ## Terms related to Data-Centric Security
 
 **Directly secured data packet**:
