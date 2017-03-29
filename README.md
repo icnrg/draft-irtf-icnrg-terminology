@@ -3,6 +3,11 @@ draft-irtf-icnrg-terminology
 
 ICNRG terminology draft
 
+## Auto-generated versions
+
+Automatically generated versions based on latest commit in master branch are here: https://icnrg.github.io/draft-irtf-icnrg-terminology/
+
+
 ## Generating RFC in txt and html formats
 
 ### Prerequisites
