@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY abstract    PUBLIC '' 'abstract.xml'>
+<!ENTITY intro       PUBLIC '' 'intro.xml'>
+<!ENTITY big-picture PUBLIC '' 'big-picture.xml'>
+<!ENTITY terms       PUBLIC '' 'terms.xml'>
+<!ENTITY semantics   PUBLIC '' 'semantics.xml'>
+
+<!ENTITY rfc.7476    PUBLIC '' '../bib/reference.RFC.7476.xml'>
+<!ENTITY I-D.irtf-icnrg-challenges             PUBLIC '' '../bib/reference.I-D.irtf-icnrg-challenges.xml'>
+<!ENTITY I-D.irtf-icnrg-evaluation-methodology PUBLIC '' '../bib/reference.I-D.irtf-icnrg-evaluation-methodology.xml'>
+<!ENTITY I-D.irtf-icnrg-videostreaming         PUBLIC '' '../bib/reference.I-D.irtf-icnrg-videostreaming.xml'>
+<!ENTITY I-D.irtf-icnrg-ccnxmessages           PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxmessages.xml'>
+<!ENTITY I-D.irtf-icnrg-ccnxsemantics          PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxsemantics.xml'>
+<!ENTITY I-D.irtf-icnrg-disaster               PUBLIC '' '../bib/reference.I-D.irtf-icnrg-disaster.xml'>
+]>
+
+<?rfc rfcedstyle="yes"?>
+<?rfc toc="yes"?>
+<?rfc tocindent="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc strict="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc text-list-symbols="-o*+"?>
+<rfc category="info" docName="draft-wissingh-icnrg-terminology-@@REVISION@@">
+  <front>
+    <title abbrev="ICN Terminology">Information-Centric Networking (ICN): Terminology</title>
+
+    <author fullname="Bastiaan Wissingh" initials="B.F." surname="Wissingh">
+      <organization>TNO</organization>
+
+      <address>
+        <email>bastiaan.wissingh@tno.nl</email>
+      </address>
+    </author>
+
+    <author fullname="Christopher A. Wood" initials="C." surname="Wood">
+      <organization>University of California Irvine</organization>
+
+      <address>
+        <email>woodc1@uci.edu</email>
+      </address>
+    </author>
+
+    <author fullname="Alex Afanasyev" initials="A." surname="Afanasyev">
+      <organization>UCLA</organization>
+
+      <address>
+        <email>aa@cs.ucla.edu</email>
+      </address>
+    </author>
+
+    <author fullname="Lixia Zhang" initials="L." surname="Zhang">
+      <organization>UCLA</organization>
+
+      <address>
+        <email>lixia@cs.ucla.edu</email>
+      </address>
+    </author>
+
+    <author fullname="David Oran" initials="D." surname="Oran">
+      <organization>Network Systems Research &amp; Design</organization>
+
+      <address>
+        <email>daveoran@orandom.net</email>
+      </address>
+    </author>
+
+    <author fullname="Christian Tschudin" initials="C." surname="Tschudin">
+      <organization>University of Basel</organization>
+
+      <address>
+        <email>christian.tschudin@unibas.ch</email>
+      </address>
+    </author>
+
+    <date month="March" year="2017"/>
+
+    <area>General</area>
+
+    <workgroup>icnrg</workgroup>
+
+    <keyword>Internet-Draft</keyword>
+
+    <abstract>
+      &abstract;
+    </abstract>
+  </front>
+
+  <middle>
+    &intro;
+    &big-picture;
+    &terms;
+    &semantics;
+  </middle>
+
+  <back>
+    <references title="Informational References">
+      &rfc.7476;
+      &I-D.irtf-icnrg-challenges;
+      &I-D.irtf-icnrg-evaluation-methodology;
+      &I-D.irtf-icnrg-videostreaming;
+      &I-D.irtf-icnrg-ccnxmessages;
+      &I-D.irtf-icnrg-ccnxsemantics;
+      &I-D.irtf-icnrg-disaster;
+    </references>
+
+    <section anchor="acknowledgements" title="Acknowledgments">
+      <t>Mark Mosco, ...</t>
+    </section>
+  </back>
+</rfc>
