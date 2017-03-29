@@ -19,6 +19,7 @@ after_success:
   - cd public
   - mv ../*.txt ../*.html .
   - ../.travis.d/make-index.py . > index.html
+  - cd ..
 env:
   global:
     - secure: "BYhcyLipCtXvRuO0vluhkqoCPHH2FyvVqd9F2B8HsJi7vWZxLara8wC0oFzcYexrpqPCW7TkocqUEOH7g9yR2eurGtm0qoOMEIyGWaqRXbE6iZSFlg1kTYOdIpI5BzpS3Gl1QokuC5/ueirKSOInnh9UKT+OdlVUl/1ZmQRG/tSAtpQbrVI1XptmB9v48RYANLjewzTC3OQV4okEz78ibO7ifqhhvGvivkFemtaoeejSNFUslx5moJcdZ0BRg2ci5xmX90yEdqcZ++svkDRyMSdFEAZYMDfVWm5Sq222L5TauvoISTvqBg1YkahsLXGeyp0ZReNgWHqcicUYl8TuVRcRD+PGjdkMhBi+mJSxl5KjC4OfIBEi8+T+xVsLEnYmmrhKdoJZOcSkBxXICqVY6UvJ7h82j24G13+tBQ2tjLqmtSuSpsvNTRxwQFIlY1xPgniJbTV+of6CsxWw3oK2rG/UPCxUgAYGcnb5EjxAUIe+Bf1tm/luLNR11xvX7x29axBw1MAQV3KaYDWeSBCUc95oqcM5FZ64IinGYlH2z3PMjbenZxCsU66HG9gkMe1X30p+ciL5EarXujAGIa4/3erFq5iC3/MIjoqJEbpy+TWhfeGoJAFieKsRvU1rloecL1bG0LM2giMtiGbcvf1rryZgr0bzZPo+lBlfq/C8nj8="
