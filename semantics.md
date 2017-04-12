@@ -24,17 +24,17 @@ More generally, ... parameters in the interest ... used e.g.,/ as command channe
 
 **Interest match in FIB (longest prefix match)**:
 
-> A process of finding a FIB entry with the longest name (in terms of name components) that is a prefix of the specified name.
+> A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.
 
 **Interest match in PIT (exact match)**:
 
-> A process of finding a PIT entry that stores the same as specified interest (including interest restrictions, if any).
+> A process of finding a PIT entry that stores the same Name as specified in the Interest (including Interest restrictions, if any).
 
 **Data match in PIT (all match)**:
 
-> a process of finding (a set of) PIT entries that can be satisfied with the specified data packet.
+> A process of finding (a set of) PIT entries that can be satisfied with the specified Data packet.
 
 **Interest match in CS (any match)**:
 
-> a process of finding an entry in router’s content store that can satisfy the specified interest.
+> A process of finding an entry in router’s Content Store that can satisfy the specified Interest.
 
