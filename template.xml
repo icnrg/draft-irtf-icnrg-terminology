@@ -7,9 +7,9 @@
 <!ENTITY semantics   PUBLIC '' 'semantics.xml'>
 
 <!ENTITY rfc.7476    PUBLIC '' '../bib/reference.RFC.7476.xml'>
-<!ENTITY I-D.irtf-icnrg-challenges             PUBLIC '' '../bib/reference.I-D.irtf-icnrg-challenges.xml'>
-<!ENTITY I-D.irtf-icnrg-evaluation-methodology PUBLIC '' '../bib/reference.I-D.irtf-icnrg-evaluation-methodology.xml'>
-<!ENTITY I-D.irtf-icnrg-videostreaming         PUBLIC '' '../bib/reference.I-D.irtf-icnrg-videostreaming.xml'>
+<!ENTITY rfc.7927    PUBLIC '' '../bib/reference.RFC.7927.xml'>
+<!ENTITY rfc.7945    PUBLIC '' '../bib/reference.RFC.7945.xml'>
+<!ENTITY rfc.7933    PUBLIC '' '../bib/reference.RFC.7933.xml'>
 <!ENTITY I-D.irtf-icnrg-ccnxmessages           PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxmessages.xml'>
 <!ENTITY I-D.irtf-icnrg-ccnxsemantics          PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxsemantics.xml'>
 <!ENTITY I-D.irtf-icnrg-disaster               PUBLIC '' '../bib/reference.I-D.irtf-icnrg-disaster.xml'>
@@ -99,9 +99,9 @@
   <back>
     <references title="Informational References">
       &rfc.7476;
-      &I-D.irtf-icnrg-challenges;
-      &I-D.irtf-icnrg-evaluation-methodology;
-      &I-D.irtf-icnrg-videostreaming;
+      &rfc.7927;
+      &rfc.7945;
+      &rfc.7933;
       &I-D.irtf-icnrg-ccnxmessages;
       &I-D.irtf-icnrg-ccnxsemantics;
       &I-D.irtf-icnrg-disaster;
