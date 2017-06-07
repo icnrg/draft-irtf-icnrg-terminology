@@ -6,11 +6,147 @@
 
 > A networking architecture that retrieves Data packets as response to Interest packets.  Content-Centric Networking (CCNx 1.x) and Named Data Networking (NDN) are two realizations (designs) of the ICN architecture.
 
-**Data packet**:
+**Data packet immutability**:
 
-> A network-level packet that carries payload, uniquely identified by a name, and is directly secured.
+> After a data packet is created, it cannot change. If the content carried in the data packet is mutable, versioning should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.
 
-  >> Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.
+## Terms related to ICN Nodes
+
+**ICN Interface**:
+
+> A generalization of the network interface that can represent a physical network interface (ethernet, wifi, bluetooth adapter, etc.), an overlay inter-node channel (IP/UDP tunnel, etc.), or an intra-node IPC channel to an application (unix socket, shared memory, intents, etc.).
+
+  >> Common aliases include: face.
+
+**ICN Consumer**:
+
+> An ICN entity that requests Data packets by generating and sending out Interest packets towards local (using intra-node interfaces) or remote (using inter-node interfaces) ICN Forwarders.
+
+  >> Common aliases include: consumer, information consumer, data consumer, consumer of the content.
+
+**ICN Producer**:
+
+> An ICN entity that creates Data packets and makes them available for retrieval.
+
+  >> Common aliases include: producer, publisher, information publisher, data publisher, data producer.
+
+**ICN Forwarder**:
+
+> An ICN entity that implements stateful forwarding.
+
+  >> Common aliases include: ICN router.
+
+**Data Mule**:
+
+> An ICN entity that temporarily stores and potentially carries an Interest or Data packet before forwarding it to next ICN entity.
+
+## Terms related to the Forwarding plane
+
+**Stateful forwarding**:
+
+> A forwarding process that records incoming Interest packets in the PIT and uses the recorded information to forward the retrieved Data packets back to the consumer(s). The recorded information can also be used to measure data plane performance, e.g., to adjust interest forwarding strategy decisions.
+
+  >> Common aliases include: ICN Data plane, ICN Forwarding.
+
+**Forwarding strategy**:
+
+> A module of the ICN stateful forwarding (ICN data) plane that implements a decision on where/how to forward the incoming Interest packet. The forwarding strategy can take input from the Forwarding Information Base (FIB), measured data plane performance parameters, and/or use other mechanisms to make the decision.
+
+  >> Common aliases include: Interest forwarding strategy.
+
+**Upstream (forwarding)**:
+
+> Forwarding packets in the direction of Interests (i.e., Interests are forwarded upstream): consumer, router, router, …, producer.
+
+**Downstream (forwarding)**:
+
+> Forwarding packets in the opposite direction of Interest forwarding (i.e., Data and Interest Nacks are forwarded downstream): producer, router, ..., consumer(s).
+
+**Interest forwarding**:
+
+> A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, creating an entry in PIT. The forwarding decision is made by the Forwarding Strategy.
+
+**Interest aggregation**:
+
+> A process of combining multiple identical Interest packets for the same Data into a single PIT entry. Not the same as Interest suppresion.
+
+  >> Common aliases include: Interest collapsing.
+
+**Data forwarding**:
+
+> A process of forwarding the incoming Data packet to the interface(s) recorded in the corresponding PIT entry (entries) and removing the corresponding PIT entry (entries).
+
+**Satisfying an Interest**:
+
+> An overall process of returning content that satisfies the constraints imposed by the Interest, most notably a match in the provided Name. 
+ 
+<!-- Four different flavors of "matching" are used in an ICN network, as described below. -->
+<!-- BW: these flavors still need to be described. The exact match, longest prefix match or all match? -->
+
+**Pending Interest Table (PIT)**:
+
+> A database that records received and not yet satisfied Interests with the interfaces from where they were received. The PIT can also store interfaces to where Interests were forwarded, and information to assess data plane performance. Interests for the same Data are aggregated into a single PIT entry.
+
+**Forwarding Information Base (FIB)**:
+
+> A database that contains a set of prefixes, each prefix associated with one or more faces that can be used to retrieve Data packets with Names under the corresponding prefix. The list of faces for each prefix can be ranked, and each face may be associated with additional information to facilitate forwarding strategy decisions.
+
+**Content Store (CS)**:
+
+> A database in an ICN router that provides caching.
+
+**In-network storage**:
+
+> An optional process of storing a Data packet within the network (opportunistic caches, dedicated on/off path caches, and managed in-network storage systems), so it can satisfy an incoming Interest for this Data packet. The in-network storages can optionally advertise the stored Data packets in the routing plane.
+
+**Opportunistic caching**:
+
+> A process of temporarily storing a forwarded Data packet in the router’s memory (RAM or disk), so it can be used to satisfy future Interests for the same Data, if any.
+	
+>> Common aliases include: on-patch in-network caching
+
+**Managed caching**:
+
+> A process of temporarily, permanently, or scheduled storing of a selected (set of) Data packet(s).
+
+>> Common aliases include: off-patch in-network storage
+
+**Managed in-network storage**:
+
+> An entity acting as an ICN publisher that implements managed caching.
+
+>> Common aliases include: repository, repo
+
+<!--
+**Off-path caching**:
+-->
+
+<!--
+On-path caching:
+-->
+
+<!--
+Cache poisoning
+-->
+
+**ICN Routing plane**:
+
+> An ICN protocol or a set of ICN protocols to exchange information about Name space reachability.
+
+**ICN Routing Information Base (RIB)**:
+
+> A database that contains a set of prefix-face mappings that are produced by running one or multiple routing protocols. The RIB is used to populate the FIB.
+
+<!--
+**Name mapping resolution (same as name resolution, name mapping)**:
+-->
+<!-- AA: this seem to be not the right place. This implies a routing scalability solution that uses name mapping. May be we have a dedicated section on that -->
+
+## Terms related to Packet Types
+
+<!-- AA: I think this section is problematic.  Both Link (this term is really ambiguous) and Manifest are application-level things and not architectural components -->
+
+<!-- BW: Moved interest, nack and data packet definition to this section, as these are also types of packets..? -->
 
 **Interest packet**:
 
@@ -18,11 +154,27 @@
 
   >> Common aliases include: interest, interest message, information request
 
-<!--<t>Location-independence (?)</t>[LZ: I’d suggest to move all location/identifier related stuff into one place, which is not here]-->
+**Interest Nack**:
 
-**Data packet immutability**:
+> A packet that contains the Interest packet and optional annotation, which is sent by the ICN Router to the interface(s) the Interest was received from. Interest Nack is used to inform downstream ICN nodes about inability to forward the included Interest packet. The annotation can describe the reason.
 
-> After a data packet is created, it cannot change.  If the content carried in the data packet is mutable, versioning should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.
+>> Common aliases include: network NACK, Interest return.
+
+**Data packet**:
+
+> A network-level packet that carries payload, uniquely identified by a name, and is directly secured.
+
+>> Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.
+
+**Link**:
+
+> A type of Data packet whose body contains the Name of another Data packet. This inner Name is often a Full Name, i.e., it specifies the Packet ID of the corresponding Data packet, but this is not a requirement.
+
+>> Common aliases include: pointer.
+
+**Manifest**:
+
+> A type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. This has the additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all Data contained in the linked Data packets.
 
 ## Terms related to Name Types
 
@@ -31,10 +183,6 @@
 > A Data packet identifier. An ICN name is hierarchical (a sequence of name components) and usually is semantically meaningful, making it expressive, flexible and application-specific (akin to a HTTP URL). A Name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), a service name, etc.
 
   >> Common aliases include: data name, interest name, content name.
-
-**Exact Name**:
-
-> A name that is encoded inside a Data packet and which typically uniquely identifies this Data packet.
 
 **Name component**:
 
@@ -45,16 +193,6 @@
 **Packet ID**:
 
 > a unique cryptographic identifier for a Data packet.  Typically, this is a cryptographic hash digest of a data packet (such as SHA256), including its name, payload, meta information, and signature.
-
-**Full Name**:
-
-> An exact Name with the Packet ID of the corresponding Data packet.
-
-**Prefix Name**:
-
-> A Name that includes a partial sequence of Name components (starting from the first one) of a Name encoded inside a Data packet.
-
-  >> Common aliases include: prefix.
 
 **Selector**:
 
@@ -73,6 +211,20 @@
 > A field of an Interest packet that transiently 'names' an Interest instance (instance of Interest for a given name).
 
 <!-- Naming scalability (?)  [LZ: probably a confusion with routing scalability] -->
+
+**Exact Name**:
+
+> A name that is encoded inside a Data packet and which typically uniquely identifies this Data packet.
+
+**Full Name**:
+
+> An exact Name with the Packet ID of the corresponding Data packet.
+
+**Prefix Name**:
+
+> A Name that includes a partial sequence of Name components (starting from the first one) of a Name encoded inside a Data packet.
+
+  >> Common aliases include: prefix.
 
 ## Terms related to Name Usage
 
@@ -108,26 +260,11 @@
 
 > A process of assigning a unique Name to the revision of the content carried in the Data packet. When using a hierarchically structured Name, the version of the Data packet can be carried in a dedicated Name component (e.g., prefix identifies data, unique version component identifies the revision of the data).
 
-  <!-- What would be the difference when putting the version before the segment number? Is
-  one then versioning individual segments instead of application layer content? -->
+<!-- What would be the difference when putting the version before the segment number? Is one then versioning individual segments instead of application layer content? -->
 
 **Fragmentation**:
 
 > A process of splitting data packets into frames so that they can be transmitted over the link with a smaller MTU size.
-
-## Terms related to Packet Types
-
-<!-- AA: I think this section is problematic.  Both Link (this term is really ambiguous) and Manifest are application-level things and not architectural components -->
-
-**Link**:
-
-> A type of Data packet whose body contains the Name of another Data packet. This inner Name is often a Full Name, i.e., it specifies the Packet ID of the corresponding Data packet, but this is not a requirement.
-
-  >> Common aliases include: pointer.
-
-**Manifest**:
-
-> A type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. This has the additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all Data contained in the linked Data packets.
 
 ## Terms related to Data-Centric Security
 
@@ -162,139 +299,7 @@
 
 > A cryptographic mechanism to prevent an observer of Interest-Data exchanges (e.g., intermediate router) from gaining detailed meta information about the Data packet. This mechanism can be realized using encryption (same as content confidentiality) or obfuscation mechanisms.
 
-## ICN Node related terms
-
-**ICN Interface**:
-
-> A generalization of the network interface that can represent a physical network interface (ethernet, wifi, bluetooth adapter, etc.), an overlay inter-node channel (IP/UDP tunnel, etc.), or an intra-node IPC channel to an application (unix socket, shared memory, intents, etc.).
-
-  >> Common aliases include: face.
-
-**ICN Consumer**:
-
-> An ICN entity that requests Data packets by generating and sending out Interest packets towards local (using intra-node interfaces) or remote (using inter-node interfaces) ICN Forwarders.
-
-  >> Common aliases include: consumer, information consumer, data consumer, consumer of the content.
-
-**ICN Producer**:
-
-> An ICN entity that creates Data packets and makes them available for retrieval.
-
-  >> Common aliases include: producer, publisher, information publisher, data publisher, data producer.
-
-**ICN Forwarder**:
-
-> An ICN entity that implements stateful forwarding.
-
-  >> Common aliases include: ICN router.
-
-**Data Mule**:
-
-> An ICN entity that temporarily stores and potentially carries an Interest or Data packet before forwarding it to next ICN entity.
-
-## Stateful forwarding plane related terms
-
-**Stateful forwarding**:
-
-> A forwarding process that records incoming Interest packets in the PIT and uses the recorded information to forward the retrieved Data packets back to the consumer(s). The recorded information can also be used to measure data plane performance, e.g., to adjust interest forwarding strategy decisions.
-
-  >> Common aliases include: ICN Data plane, ICN Forwarding.
-
-**Interest forwarding**:
-
-> A process of forwarding Interest packets using the Names carried in the Interests, creating an entry in PIT. The forwarding decision is made by the Forwarding Strategy.
-
-**Pending Interest Table (PIT)**:
-
-> A database that records received and not yet satisfied Interests with the interfaces from where they were received. The PIT can also store interfaces to where Interests were forwarded, and information to assess data plane performance. Interests for the same Data are aggregated into a single PIT entry.
-
-**Forwarding strategy**:
-
-> A module of the ICN stateful forwarding (ICN data) plane that implements a decision on where/how to forward the incoming Interest packet. The forwarding strategy can take input from the Forwarding Information Base (FIB), measured data plane performance parameters, and/or use other mechanisms to make the decision.
-
-  >> Common aliases include: Interest forwarding strategy.
-
-**Interest aggregation**:
-
-> A process of combining multiple identical Interest packets for the same Data into a single PIT entry. Not the same as Interest suppresion.
-
-  >> Common aliases include: Interest collapsing.
-
-**Data forwarding**:
-
-> A process of forwarding the incoming Data packet to the interface(s) recorded in the corresponding PIT entry (entries) and removing the corresponding PIT entry (entries).
-
-**Satisfying an Interest**:
-
-> An overall process of returning content that satisfies the constraints imposed by the Interest, most notably a match in the provided Name. 
- 
-<!-- Four different flavors of "matching" are used in an ICN network, as described below. -->
-<!-- Bastiaan: these flavors still need to be described -->
-
-**Forwarding Information Base (FIB)**:
-
-> A database that contains a set of prefixes, each prefix associated with one or more faces that can be used to retrieve Data packets with Names under the corresponding prefix. The list of faces for each prefix can be ranked, and each face may be associated with additional information to facilitate forwarding strategy decisions.
-
-**Interest Nack**:
-
-> A packet that contains the Interest packet and optional annotation, which is sent by the ICN Router to the interface(s) the Interest was received from. Interest Nack is used to inform downstream ICN nodes about inability to forward the included Interest packet. The annotation can describe the reason.
-
-  >> Common aliases include: network NACK, Interest return.
-
-**Upstream (forwarding)**:
-
-> Forwarding packets in the direction of Interests (i.e., Interests are forwarded upstream): consumer, router, router, …, producer.
-
-**Downstream (forwarding)**:
-
-> Forwarding packets in the opposite direction of Interest forwarding (i.e., Data and Interest Nacks are forwarded downstream): producer, router, ..., consumer(s).
-
-**In-network storage**:
-
-> An optional process of storing a Data packet within the network (opportunistic caches, dedicated on/off path caches, and managed in-network storage systems), so it can satisfy an incoming Interest for this Data packet. The in-network storages can optionally advertise the stored Data packets in the routing plane.
-
-**Opportunistic caching (or on-path in-network caching)**:
-
-> A process of temporarily storing a forwarded Data packet in the router’s memory (RAM or disk), so it can be used to satisfy future Interests for the same Data, if any.
-
-**Managed caching (or off-path in-network storage)**:
-
-> A process of temporarily, permanently, or scheduled storing of a selected (set of) Data packet(s).
-
-**Content Store (CS)**:
-
-> A database in an ICN router that provides caching.
-
-**Managed in-network storage (repository, repo)**:
-
-> An entity acting as an ICN producer that implements managed caching.
-
-**ICN Routing plane**:
-
-> An ICN protocol or a set of ICN protocols to exchange information about Name space reachability.
-
-**ICN Routing Information Base (RIB)**:
-
-> A database that contains a set of prefix-face mappings that are produced by running one or multiple routing protocols. The RIB is used to populate the FIB.
-
-<!--
-**Off-path caching**:
--->
-
-<!--
-On-path caching:
--->
-
-<!--
-Cache poisoning
--->
-
-<!--
-**Name mapping resolution (same as name resolution, name mapping)**:
--->
-<!-- AA: this seem to be not the right place. This implies a routing scalability solution that uses name mapping. May be we have a dedicated section on that -->
-
-## Specific solution related terms
+## Uncategorized terms
 
 **Route-By-Name Routing (RBNR)**
 
@@ -306,7 +311,13 @@ Cache poisoning
 
 **Routing Locator Signing**
 
-## Uncategorized terms
+**Location-independence**
+<!--<t>Location-independence (?)</t>[LZ: I’d suggest to move all location/identifier related stuff into one place, which is not here]-->
+
+<!-- > Locator Identifier split.
+DaveO, this is not the place to talk about it, but there are terms related to network topology, or binding between names and where the corresponding items reside on the network. We can introduce certain terms that not go away, people will talk about a locator.
+Lixia, we definitily need a draft to identify this
+DaveO, we need more review on this on network identifiers. ICNRG draft, enabling network Identifier in ICN to enable optimzed forwarding. Forwarding label in CCN. Park for now. -->
 
 **Content based**
 
