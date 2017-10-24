@@ -2,7 +2,7 @@
 
 <reference anchor='I-D.irtf-icnrg-disaster'>
 <front>
-<title>Using ICN in disaster scenarios</title>
+<title>Research Directions for Using ICN in Disaster Scenarios</title>
 
 <author initials='J' surname='Seedorf' fullname='Jan Seedorf'>
     <organization />
@@ -24,13 +24,14 @@
     <organization />
 </author>
 
-<date month='March' day='13' year='2017' />
+<date month='July' day='3' year='2017' />
 
-<abstract><t>Information Centric Networking (ICN) is a new paradigm where the network provides users with named content, instead of communication channels between hosts.  This document outlines some research directions for Information Centric Networking with respect to applying ICN approaches for coping with natural or human-generated, large-scale disasters.</t></abstract>
+<abstract><t>Information Centric Networking (ICN) is a new paradigm where the network provides users with named content, instead of communication
+   channels between hosts.  This document outlines some research directions for Information Centric Networking with respect to applying ICN approaches for coping with natural or human-generated, large-scale disasters.</t></abstract>
 
 </front>
 
-<seriesInfo name='Internet-Draft' value='draft-irtf-icnrg-disaster-01' />
+<seriesInfo name='Internet-Draft' value='draft-irtf-icnrg-disaster-02' />
 <format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-irtf-icnrg-disaster-01.txt' />
+        target='http://www.ietf.org/internet-drafts/draft-irtf-icnrg-disaster-02.txt' />
 </reference>
