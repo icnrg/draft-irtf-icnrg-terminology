@@ -24,7 +24,7 @@
 <?rfc comments="yes"?>
 <?rfc inline="yes"?>
 <?rfc text-list-symbols="-o*+"?>
-<rfc category="info" docName="draft-wissingh-icnrg-terminology-@@REVISION@@">
+<rfc category="info" docName="draft-irtf-icnrg-terminology-@@REVISION@@">
   <front>
     <title abbrev="ICN Terminology">Information-Centric Networking (ICN): CCN and NDN Terminology</title>
 
@@ -76,7 +76,7 @@
       </address>
     </author>
 
-    <date month="September" year="2017"/>
+    <date month="December" year="2017"/>
 
     <area>General</area>
 
