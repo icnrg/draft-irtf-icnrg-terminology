@@ -103,13 +103,13 @@
 
 > A process of temporarily storing a forwarded Data packet in the router’s memory (RAM or disk), so it can be used to satisfy future Interests for the same Data, if any.
 	
->> Common aliases include: on-patch in-network caching
+>> Common aliases include: on-path in-network caching
 
 **Managed caching**:
 
 > A process of temporarily, permanently, or scheduled storing of a selected (set of) Data packet(s).
 
->> Common aliases include: off-patch in-network storage
+>> Common aliases include: off-path in-network storage
 
 **Managed in-network storage**:
 
