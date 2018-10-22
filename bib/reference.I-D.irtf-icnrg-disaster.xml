@@ -24,14 +24,14 @@
     <organization />
 </author>
 
-<date month='July' day='3' year='2017' />
+<date month='February' day='17' year='2018' />
 
 <abstract><t>Information Centric Networking (ICN) is a new paradigm where the network provides users with named content, instead of communication
    channels between hosts.  This document outlines some research directions for Information Centric Networking with respect to applying ICN approaches for coping with natural or human-generated, large-scale disasters.</t></abstract>
 
 </front>
 
-<seriesInfo name='Internet-Draft' value='draft-irtf-icnrg-disaster-02' />
+<seriesInfo name='Internet-Draft' value='draft-irtf-icnrg-disaster-03' />
 <format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-irtf-icnrg-disaster-02.txt' />
+        target='http://www.ietf.org/internet-drafts/draft-irtf-icnrg-disaster-03.txt' />
 </reference>
