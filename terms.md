@@ -78,8 +78,8 @@
 
 **Satisfying an Interest**:
 
-> An overall process of returning content that satisfies the constraints imposed by the Interest, most notably a match in the provided Name. 
- 
+> An overall process of returning content that satisfies the constraints imposed by the Interest, most notably a match in the provided Name.
+
 <!-- Four different flavors of "matching" are used in an ICN network, as described below. -->
 <!-- BW: these flavors still need to be described. The exact match, longest prefix match or all match? -->
 
@@ -102,7 +102,7 @@
 **Opportunistic caching**:
 
 > A process of temporarily storing a forwarded Data packet in the router’s memory (RAM or disk), so it can be used to satisfy future Interests for the same Data, if any.
-	
+
 >> Common aliases include: on-path in-network caching
 
 **Managed caching**:
@@ -298,33 +298,3 @@ Cache poisoning
 **Name Confidentiality**
 
 > A cryptographic mechanism to prevent an observer of Interest-Data exchanges (e.g., intermediate router) from gaining detailed meta information about the Data packet. This mechanism can be realized using encryption (same as content confidentiality) or obfuscation mechanisms.
-
-## Uncategorized terms
-
-**Route-By-Name Routing (RBNR)**
-
-**Lookup-By-Name Routing (LBNR)**
-
-**Bread-crumbs routing**
-
-**Replication-by-name**
-
-**Routing Locator Signing**
-
-**Location-independence**
-<!--<t>Location-independence (?)</t>[LZ: I’d suggest to move all location/identifier related stuff into one place, which is not here]-->
-
-<!-- > Locator Identifier split.
-DaveO, this is not the place to talk about it, but there are terms related to network topology, or binding between names and where the corresponding items reside on the network. We can introduce certain terms that not go away, people will talk about a locator.
-Lixia, we definitily need a draft to identify this
-DaveO, we need more review on this on network identifiers. ICNRG draft, enabling network Identifier in ICN to enable optimzed forwarding. Forwarding label in CCN. Park for now. -->
-
-**Content based**
-
-**ICN API**
-
-**Information Centric Delay Tolerant Network**
-
-**Located-Named-Data**
-
-**Sessionless**
