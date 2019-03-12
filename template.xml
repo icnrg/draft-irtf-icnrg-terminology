@@ -5,6 +5,8 @@
 <!ENTITY big-picture PUBLIC '' 'big-picture.xml'>
 <!ENTITY terms       PUBLIC '' 'terms.xml'>
 <!ENTITY semantics   PUBLIC '' 'semantics.xml'>
+<!ENTITY iana-considerations   PUBLIC '' 'iana-considerations.xml'>
+<!ENTITY security-considerations  PUBLIC '' 'security-considerations.xml'>
 
 <!ENTITY rfc.7476    PUBLIC '' '../bib/reference.RFC.7476.xml'>
 <!ENTITY rfc.7927    PUBLIC '' '../bib/reference.RFC.7927.xml'>
@@ -76,7 +78,7 @@
       </address>
     </author>
 
-    <date month="February" year="2019"/>
+    <date month="March" year="2019"/>
 
     <area>General</area>
 
@@ -94,6 +96,8 @@
     &big-picture;
     &terms;
     &semantics;
+    &iana-considerations;
+    &security-considerations;
   </middle>
 
   <back>

@@ -68,7 +68,7 @@
 
 **Interest aggregation**:
 
-> A process of combining multiple identical Interest packets for the same Data into a single PIT entry. Not the same as Interest suppresion.
+> A process of combining multiple Interest packets with the same Name and additional restrictions for the same Data into a single PIT entry. Not the same as Interest suppression.
 
   >> Common aliases include: Interest collapsing.
 
@@ -82,6 +82,22 @@
 
 <!-- Four different flavors of "matching" are used in an ICN network, as described below. -->
 <!-- BW: these flavors still need to be described. The exact match, longest prefix match or all match? -->
+
+**Interest match in FIB (longest prefix match)**:
+
+> A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.
+
+**Interest match in PIT (exact match)**:
+
+> A process of finding a PIT entry that stores the same Name as specified in the Interest (including Interest restrictions, if any).
+
+**Data match in PIT (all match)**:
+
+> A process of finding (a set of) PIT entries that can be satisfied with the specified Data packet.
+
+**Interest match in CS (any match)**:
+
+> A process of finding an entry in router’s Content Store that can satisfy the specified Interest.
 
 **Pending Interest Table (PIT)**:
 
@@ -194,6 +210,8 @@ Cache poisoning
 
 > a unique cryptographic identifier for a Data packet.  Typically, this is a cryptographic hash digest of a data packet (such as SHA256), including its name, payload, meta information, and signature.
 
+  >> Common aliases include: implicit digest.
+
 **Selector**:
 
 > A mechanism (condition) to select an individual Data packet from a collection of Data packets that match a given Interest that requests data using a prefix or exact Name.
@@ -264,7 +282,7 @@ Cache poisoning
 
 **Fragmentation**:
 
-> A process of splitting data packets into frames so that they can be transmitted over the link with a smaller MTU size.
+> A process of splitting PDUs into frames so that they can be transmitted over the link with a smaller MTU size.
 
 ## Terms related to Data-Centric Security
 

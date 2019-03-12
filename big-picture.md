@@ -47,11 +47,6 @@ The following list describes the basic ICN concepts needed to discuss the implem
 
 > A node within an ICN network can fulfill the role of a data producer, a data consumer, and/or a forwarder for Interest and Data packets. When a forwarder has connectivity to neighbor nodes, it performs Interest and Data packet forwarding in real time. It can also behave like a packet mule, that is it may carry an Interest or Data packet for some time before forwarding it to next node. An ICN node may also run routing protocols to assist its Interest forwarding decisions.
 
-                           --> add ASCII art here
-                           (of a forwarding node
-                           and its PIT, FIB, CS)
-^[fig:fwd-node::Structure of an ICN forwarding node.]
-
 **Forwarding Plane**:
 
 > The canonical way of implementing packet forwarding in an ICN network relies on three data structures that capture a node's state: a Forwarding Interest Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes Interest forwarding strategies which takes input from both FIB and measurements to make Interest forwarding decisions. When a node receives an Interest packet, it checks its CS and PIT to find a matching entry; if no match is found, the node records the Interest in its PIT and forwards the Interest to the next hop(s) towards the requested content based on the information in its FIB.
