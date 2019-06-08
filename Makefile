@@ -1,5 +1,5 @@
 NAME = draft-irtf-icnrg-terminology
-REVISION = 03
+REVISION = 04
 
 PANDOC = pandoc
 
@@ -16,7 +16,7 @@ build/template.xml: template.xml
 	sed -e "s/@@REVISION@@/$(REVISION)/g" template.xml > build/template.xml
 
 build/%.xml: %.md build/template.xml
-	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
+	pandoc -t docbook4 -s $< | xsltproc --nonet transform.xsl - > $@
 
 $(NAME)-$(REVISION).txt: $(addprefix build/,$(SOURCES:.md=.xml))
 	(cd build; xml2rfc -o ../$@ --text template.xml)
