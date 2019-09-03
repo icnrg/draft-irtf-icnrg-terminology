@@ -1,6 +1,6 @@
 # A Sketch of the Big Picture of ICN
 
-In networking terms, an ICN is a delivery infrastructure for named data. For other, complementing views see [](#semantics-and-usage).
+In networking terms, an ICN is a delivery infrastructure for named data. For other complementing views see [](#semantics-and-usage).
 
     requestor         zero or more           data sources or
     (node)          forwarding nodes         replica nodes
@@ -24,7 +24,7 @@ The following list describes the basic ICN concepts needed to discuss the implem
 
 **Packet and Content Names**
 
-> Without an irrefutable binding between a name of a Data packet and its content, Data packet names would be useless for fetching specific content. In ICN, verification of a Data packet's name-to-content binding is achieved through cryptographic means, either by (1) a cryptographic signature that explicitly binds an application-chosen name to a Data packet's content, or (2) relying on an implicit name (cryptographic hash of the Data packet with or without application-chosen name) that the data consumer obtained through other means.
+> Without an irrefutable binding between the name of a Data packet and its content, Data packet names would be useless for fetching specific content. In ICN, verification of a Data packet's name-to-content binding is achieved through cryptographic means, either by (1) a cryptographic signature that explicitly binds an application-chosen name to a Data packet's content, or (2) relying on an implicit name (cryptographic hash of the Data packet with or without application-chosen name) that the data consumer obtained through other means.
 
 **Data Authenticity and Encryption**:
 

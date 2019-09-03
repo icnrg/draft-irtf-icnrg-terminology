@@ -1,26 +1,27 @@
 # Semantics and Usage
 
-The terminology described above is the manifestation of intended semantics of NDN and CCN operations (what do we expect the network to do?). In this section we summarize the most commonly proposed use cases and interpretations.
+The terminology described above is the manifestation of intended semantics of NDN and CCNx operations (what do we expect the network to do?). In this section we summarize the most commonly proposed use cases and interpretations.
 
 ## Data Transfer
 
-The networking view of NDN and CCN is that the request/reply protocol implements a basic, unreliable data transfer service for single, named packets.
+The networking view of NDN and CCNx is that the request/reply protocol implements a basic, unreliable data transfer service for single, named packets.
 
 ## Data Transport
 
-Data transfer can be turned into a data transport service for application-level objects by additional logic. This transport logic must understand and construct the series of names needed to reassemble the segmented object. Various flavors of transport can be envisaged (reliable, streaming, mailbox, etc)
+Data transfer can be turned into a data transport service for application-level objects by additional logic. This transport logic must understand and construct the series of names needed to reassemble the segmented object. Various flavors of transport can be envisaged (reliable, streaming, mailbox, etc).
 
 ## Lookup Service
 
-A more distributed systems view of the basic request/reply protocol is that NDN and CCN provide a distributed lookup service: Given a key value (=name), the service will return the corresponding value.
+In a more distributed systems view of the basic request/reply protocol, NDN and CCNx provide a distributed lookup service: given a key value (=name), the service will return the corresponding value.
 
 ## Database Access
 
-The lookup service turns into a database access protocol by ... namespace design ... prefix standing for a collection ... The DB query expression must be encoded as a name.
+A lookup service can be turned into into a database access protocol by using the namespace structure to specify names as access keys into a database. A name prefix therefore stands for a collection or table of a database, while the rest of the name specifies the query expression to be executed.
 
 ## Remote Procedure Call
 
-More generally, ... parameters in the interest ... used e.g.,/ as command channel for remote control of neighbor routers.
+The names as defined here for Interests and Data can refer to Remote Procedure call functions, their input arguments, and their results.
+
 
 **Interest match in FIB (longest prefix match)**:
 

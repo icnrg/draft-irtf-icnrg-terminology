@@ -1,0 +1,1352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>Information-Centric Networking (ICN): CCNx and NDN Terminology</title>
+
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
+
+  <link href="#rfc.toc" rel="Contents"/>
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 A Sketch of the Big Picture of ICN"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Terms by category"/>
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Generic terms"/>
+<link href="#rfc.section.3.2" rel="Chapter" title="3.2 Terms related to ICN Nodes"/>
+<link href="#rfc.section.3.3" rel="Chapter" title="3.3 Terms related to the Forwarding plane"/>
+<link href="#rfc.section.3.4" rel="Chapter" title="3.4 Terms related to Packet Types"/>
+<link href="#rfc.section.3.5" rel="Chapter" title="3.5 Terms related to Name Types"/>
+<link href="#rfc.section.3.6" rel="Chapter" title="3.6 Terms related to Name Usage"/>
+<link href="#rfc.section.3.7" rel="Chapter" title="3.7 Terms related to Data-Centric Security"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 Semantics and Usage"/>
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Data Transfer"/>
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Data Transport"/>
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Lookup Service"/>
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 Database Access"/>
+<link href="#rfc.section.4.5" rel="Chapter" title="4.5 Remote Procedure Call"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations"/>
+<link href="#rfc.references" rel="Chapter" title="7 Informational References"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgments"/>
+<link href="#rfc.authors" rel="Chapter"/>
+
+
+  <meta name="generator" content="xml2rfc version 2.5.2 - http://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Wissingh, B., Wood, C., Afanasyev, A., Zhang, L., Oran, D., and C. Tschudin" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-irtf-icnrg-terminology-05" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-9-3" />
+  <meta name="dct.abstract" content="Information Centric Networking (ICN) is a novel paradigm where network communications are accomplished by requesting named content, instead of sending packets to destination addresses. Named Data Networking (NDN) and Content-Centric Networking (CCNx) are two prominent ICN architectures. This document provides an overview of the terminology and definitions that have been used in describing concepts in these two implementations of ICN. While there are other ICN architectures, they are not part of the NDN and CCNx concepts and as such are out of scope for this document. This document is a product of the Information-Centric Networking Research Group (ICNRG).  " />
+  <meta name="description" content="Information Centric Networking (ICN) is a novel paradigm where network communications are accomplished by requesting named content, instead of sending packets to destination addresses. Named Data Networking (NDN) and Content-Centric Networking (CCNx) are two prominent ICN architectures. This document provides an overview of the terminology and definitions that have been used in describing concepts in these two implementations of ICN. While there are other ICN architectures, they are not part of the NDN and CCNx concepts and as such are out of scope for this document. This document is a product of the Information-Centric Networking Research Group (ICNRG).  " />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+  <td class="left">ICNRG</td>
+  <td class="right">B. Wissingh</td>
+</tr>
+<tr>
+  <td class="left">Internet-Draft</td>
+  <td class="right">TNO</td>
+</tr>
+<tr>
+  <td class="left">Intended status: Informational</td>
+  <td class="right">C. Wood</td>
+</tr>
+<tr>
+  <td class="left">Expires: March 6, 2020</td>
+  <td class="right">University of California Irvine</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">A. Afanasyev</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">Florida International University</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">L. Zhang</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">UCLA</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">D. Oran</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">Network Systems Research &amp; Design</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">C. Tschudin</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">University of Basel</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">September 3, 2019</td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">Information-Centric Networking (ICN): CCNx and NDN Terminology<br />
+  <span class="filename">draft-irtf-icnrg-terminology-05</span></p>
+  
+  <h1 id="rfc.abstract">
+  <a href="#rfc.abstract">Abstract</a>
+</h1>
+<p>Information Centric Networking (ICN) is a novel paradigm where network communications are accomplished by requesting named content, instead of sending packets to destination addresses. Named Data Networking (NDN) and Content-Centric Networking (CCNx) are two prominent ICN architectures. This document provides an overview of the terminology and definitions that have been used in describing concepts in these two implementations of ICN. While there are other ICN architectures, they are not part of the NDN and CCNx concepts and as such are out of scope for this document. This document is a product of the Information-Centric Networking Research Group (ICNRG).  </p>
+<h1 id="rfc.status">
+  <a href="#rfc.status">Status of This Memo</a>
+</h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on March 6, 2020.</p>
+<h1 id="rfc.copyrightnotice">
+  <a href="#rfc.copyrightnotice">Copyright Notice</a>
+</h1>
+<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
+<li>2.   <a href="#rfc.section.2">A Sketch of the Big Picture of ICN</a></li>
+<li>3.   <a href="#rfc.section.3">Terms by category</a></li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Generic terms</a></li>
+<li>3.2.   <a href="#rfc.section.3.2">Terms related to ICN Nodes</a></li>
+<li>3.3.   <a href="#rfc.section.3.3">Terms related to the Forwarding plane</a></li>
+<li>3.4.   <a href="#rfc.section.3.4">Terms related to Packet Types</a></li>
+<li>3.5.   <a href="#rfc.section.3.5">Terms related to Name Types</a></li>
+<li>3.6.   <a href="#rfc.section.3.6">Terms related to Name Usage</a></li>
+<li>3.7.   <a href="#rfc.section.3.7">Terms related to Data-Centric Security</a></li>
+</ul><li>4.   <a href="#rfc.section.4">Semantics and Usage</a></li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Data Transfer</a></li>
+<li>4.2.   <a href="#rfc.section.4.2">Data Transport</a></li>
+<li>4.3.   <a href="#rfc.section.4.3">Lookup Service</a></li>
+<li>4.4.   <a href="#rfc.section.4.4">Database Access</a></li>
+<li>4.5.   <a href="#rfc.section.4.5">Remote Procedure Call</a></li>
+</ul><li>5.   <a href="#rfc.section.5">IANA Considerations</a></li>
+<li>6.   <a href="#rfc.section.6">Security Considerations</a></li>
+<li>7.   <a href="#rfc.references">Informational References</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgments</a></li>
+<li><a href="#rfc.authors">Authors' Addresses</a></li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
+<p id="rfc.section.1.p.1">Information-centric networking (ICN) is an architecture to evolve the Internet infrastructure from the existing host-centric design to a data-centric architecture, where accessing data by name becomes the essential network primitive. The goal is to let applications refer to data independently of their location or means of transportation, which enables native multicast delivery, ubiquitous in-network caching and replication of data objects.  </p>
+<p id="rfc.section.1.p.2">As the work on this topic continues to evolve, many new terms are emerging. The goal of this document is to collect the key terms with a corresponding definition as they are used in the CCNx and NDN projects. Other ICN projects such as NetInf, or MobilityFirst are not covered and will be the subject of other documents.  </p>
+<p id="rfc.section.1.p.3">To help provide context for the individual defined terms, in this draft we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <a href="#a-sketch-of-the-big-picture-of-icn">Section 2</a>, after which, in <a href="#terms-by-category">Section 3</a>, ICN related terms are listed by different categories.  </p>
+<p id="rfc.section.1.p.4">This document represents the consensus of the Information-Centric Networking Research Group (ICNRG). It has been reviewed extensively by the Research Group (RG) members active in the specific areas of work covered by the document. It is not an IETF product and is not intended for standardization in the IETF.  </p>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#a-sketch-of-the-big-picture-of-icn" id="a-sketch-of-the-big-picture-of-icn">A Sketch of the Big Picture of ICN</a></h1>
+<p id="rfc.section.2.p.1">In networking terms, an ICN is a delivery infrastructure for named data. For other complementing views see <a href="#semantics-and-usage">Section 4</a>.  </p>
+<div id="rfc.figure.1"/>
+<div id="fig:i-d-protocol"/>
+<pre>
+requestor         zero or more           data sources or
+(node)          forwarding nodes         replica nodes
+  |                 | ... |                  |...|
+  |   Interest(n)   |     |   Interest(n)    |   |
+  | --------------&gt; |     | ---------------&gt; |   |
+  |                 |     | -------------------&gt; |
+  |                 |     |                  |   |
+  |                 |     |  Data([n],c,[s]) |   |
+  |                 |     | &lt;--------------- |   |
+  |                 |     | &lt;------------------- |
+  | Data([n],c,[s]) |     |                  |   |
+  | &lt;-------------- |     |                  |   |
+</pre>
+<p class="figure">Figure 1: Request-Reply Protocol of ICN networking. Legend: n=name, c=content, s=signature.</p>
+<p/>
+<p id="rfc.section.2.p.3">The following list describes the basic ICN concepts needed to discuss the implementation of this service abstraction.  </p>
+<p><strong>Request-Reply Protocol (Interest and Data Packet)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN&#8217;s lookup service is implemented by defining two types of network packet formats: Interest packets that request content by name, and Data packets that carry the requested content. The returned Data packet must match the request&#8217;s parameters (e.g., having a partially or fully matching name). If the request is ambiguous and several Data packets would satisfy the request, the ICN network returns only one matching Data packet (flow balance between Interest and Data packets over individual links).  </li>
+</ul>
+<p><strong>Packet and Content Names</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>Without an irrefutable binding between the name of a Data packet and its content, Data packet names would be useless for fetching specific content. In ICN, verification of a Data packet&#8217;s name-to-content binding is achieved through cryptographic means, either by (1) a cryptographic signature that explicitly binds an application-chosen name to a Data packet&#8217;s content, or (2) relying on an implicit name (cryptographic hash of the Data packet with or without application-chosen name) that the data consumer obtained through other means.  </li>
+</ul>
+<p><strong>Data Authenticity and Encryption</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>Any data consumer and network element can validate the authenticity of a Data packet by verifying its cryptographic name-to-content binding. In contrast, whether a Data packet&#8217;s content (payload) itself is encrypted or not is irrelevant to the ICN network. The use and management of content encryption keys is an application-layer concern.  </li>
+</ul>
+<p><strong>Trust</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>Data authenticity is distinct from data trustworthiness, though the two concepts are related. A packet is authentic if it has a valid name-to-content binding. A packet is trustworthy, i.e., it comes from a reputable or trusted origin, if this binding is valid in the context of a trust model.  </li>
+</ul>
+<p><strong>Segmenting and Versioning</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN network will be engineered for some packet size limit. As application-level data objects will often be considerably larger, objects must be segmented into multiple Data packets. The names for these Data packets can, for example, be constructed by choosing one application-level object name to which a different suffix is added for each segment. The same method can be used to handle different versions of an application-level object by including a version number into the name of the overall object.  </li>
+</ul>
+<p><strong>Packet and Frame</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>NDN and CCNx introduce Protocol Data Units (PDUs) which typically are larger than the maximum transmission unit of the underlying networking technology. We refer to PDUs as packets and the (potentially fragmented) packet parts that traverse MTU-bound links as frames. Handling link-layer technologies which lead to fragmentation of ICN packets is done inside the ICN network and is not visible at the service interface.  </li>
+</ul>
+<p><strong>ICN Node</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A node within an ICN network can fulfill the role of a data producer, a data consumer, and/or a forwarder for Interest and Data packets. When a forwarder has connectivity to neighbor nodes, it performs Interest and Data packet forwarding in real time. It can also behave like a packet mule, that is it may carry an Interest or Data packet for some time before forwarding it to next node. An ICN node may also run routing protocols to assist its Interest forwarding decisions.  </li>
+</ul>
+<p><strong>Forwarding Plane</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>The canonical way of implementing packet forwarding in an ICN network relies on three data structures that capture a node&#8217;s state: a Forwarding Interest Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes Interest forwarding strategies which takes input from both FIB and measurements to make Interest forwarding decisions. When a node receives an Interest packet, it checks its CS and PIT to find a matching entry; if no match is found, the node records the Interest in its PIT and forwards the Interest to the next hop(s) towards the requested content based on the information in its FIB.  </li>
+</ul>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#terms-by-category" id="terms-by-category">Terms by category</a></h1>
+<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#generic-terms" id="generic-terms">Generic terms</a></h1>
+<p><strong>Information-Centric Networking (ICN)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A networking architecture that retrieves Data packets as response to Interest packets. Content-Centric Networking (CCNx 1.x) and Named Data Networking (NDN) are two realizations (designs) of the ICN architecture.  </li>
+</ul>
+<p><strong>Data packet immutability</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>After a data packet is created, it cannot change. If the content carried in the data packet is mutable, versioning should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.  </li>
+</ul>
+<h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> <a href="#terms-related-to-icn-nodes" id="terms-related-to-icn-nodes">Terms related to ICN Nodes</a></h1>
+<p><strong>ICN Interface</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A generalization of the network interface that can represent a physical network interface (ethernet, wifi, bluetooth adapter, etc.), an overlay inter-node channel (IP/UDP tunnel, etc.), or an intra-node inter-process communication (IPC) channel to an application (unix socket, shared memory, intents, etc.).  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: face.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>ICN Consumer</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN entity that requests Data packets by generating and sending out Interest packets towards local (using intra-node interfaces) or remote (using inter-node interfaces) ICN Forwarders.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: consumer, information consumer, data consumer, consumer of the content.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>ICN Producer</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN entity that creates Data packets and makes them available for retrieval.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: producer, publisher, information publisher, data publisher, data producer.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>ICN Forwarder</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN entity that implements stateful forwarding.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: ICN router.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Data Mule</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN entity that temporarily stores and potentially carries an Interest or Data packet before forwarding it to next ICN entity.  </li>
+</ul>
+<h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> <a href="#terms-related-to-the-forwarding-plane" id="terms-related-to-the-forwarding-plane">Terms related to the Forwarding plane</a></h1>
+<p><strong>Stateful forwarding</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A forwarding process that records incoming Interest packets in the PIT and uses the recorded information to forward the retrieved Data packets back to the consumer(s). The recorded information can also be used to measure data plane performance, e.g., to adjust interest forwarding strategy decisions.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: ICN Data plane, ICN Forwarding.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Forwarding strategy</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A module of the ICN stateful forwarding (ICN data) plane that implements a decision on where/how to forward the incoming Interest packet. The forwarding strategy can take input from the Forwarding Information Base (FIB), measured data plane performance parameters, and/or use other mechanisms to make the decision.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: Interest forwarding strategy.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Upstream (forwarding)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>Forwarding packets in the direction of Interests (i.e., Interests are forwarded upstream): consumer, router, router, &#8230;, producer.  </li>
+</ul>
+<p><strong>Downstream (forwarding)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>Forwarding packets in the opposite direction of Interest forwarding (i.e., Data and Interest Nacks are forwarded downstream): producer, router, &#8230;, consumer(s).  </li>
+</ul>
+<p><strong>Interest forwarding</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, creating an entry in the PIT. The forwarding decision is made by the Forwarding Strategy.  </li>
+</ul>
+<p><strong>Interest aggregation</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of combining multiple Interest packets with the same Name and additional restrictions for the same Data into a single PIT entry. Not the same as Interest suppression.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: Interest collapsing.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Data forwarding</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of forwarding the incoming Data packet to the interface(s) recorded in the corresponding PIT entry (entries) and removing the corresponding PIT entry (entries).  </li>
+</ul>
+<p><strong>Satisfying an Interest</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An overall process of returning content that satisfies the constraints imposed by the Interest, most notably a match in the provided Name.  </li>
+</ul>
+<p><strong>Interest match in FIB (longest prefix match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.  </li>
+</ul>
+<p><strong>Interest match in PIT (exact match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding a PIT entry that stores the same Name as specified in the Interest (including Interest restrictions, if any).  </li>
+</ul>
+<p><strong>Data match in PIT (all match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding (a set of) PIT entries that can be satisfied with the specified Data packet.  </li>
+</ul>
+<p><strong>Interest match in CS (any match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding an entry in router&#8217;s Content Store that can satisfy the specified Interest.  </li>
+</ul>
+<p><strong>Pending Interest Table (PIT)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A database that records received and not yet satisfied Interests with the interfaces from where they were received. The PIT can also store interfaces to where Interests were forwarded, and information to assess data plane performance. Interests for the same Data are aggregated into a single PIT entry.  </li>
+</ul>
+<p><strong>Forwarding Information Base (FIB)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A database that contains a set of prefixes, each prefix associated with one or more faces that can be used to retrieve Data packets with Names under the corresponding prefix. The list of faces for each prefix can be ranked, and each face may be associated with additional information to facilitate forwarding strategy decisions.  </li>
+</ul>
+<p><strong>Content Store (CS)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A database in an ICN router that provides caching.  </li>
+</ul>
+<p><strong>In-network storage</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An optional process of storing a Data packet within the network (opportunistic caches, dedicated on/off path caches, and managed in-network storage systems), so it can satisfy an incoming Interest for this Data packet. The in-network storages can optionally advertise the stored Data packets in the routing plane.  </li>
+</ul>
+<p><strong>Opportunistic caching</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of temporarily storing a forwarded Data packet in the router&#8217;s memory (RAM or disk), so it can be used to satisfy future Interests for the same Data, if any.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: on-path in-network caching </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Managed caching</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of temporarily, permanently, or scheduled storing of a selected (set of) Data packet(s).  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: off-path in-network storage </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Managed in-network storage</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An entity acting as an ICN publisher that implements managed caching.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: repository, repo </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>ICN Routing plane</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An ICN protocol or a set of ICN protocols to exchange information about Name space reachability.  </li>
+</ul>
+<p><strong>ICN Routing Information Base (RIB)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A database that contains a set of prefix-face mappings that are produced by running one or multiple routing protocols. The RIB is used to populate the FIB.  </li>
+</ul>
+<h1 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4.</a> <a href="#terms-related-to-packet-types" id="terms-related-to-packet-types">Terms related to Packet Types</a></h1>
+<p><strong>Interest packet</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A network-level packet that expresses the request for a data packet using either an exact name or a name prefix. An Interest packet may optionally carry a set of additional restrictions (e.g., Interest selectors). An Interest may be associated with additional information to facilitate forwarding and can include Interest lifetime, hop limit, forwarding hints, labels, etc. In different ICN designs, the set of additional associated information may vary.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: Interest, Interest message, information request </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Interest Nack</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A packet that contains the Interest packet and optional annotation, which is sent by the ICN Router to the interface(s) the Interest was received from. Interest Nack is used to inform downstream ICN nodes about inability to forward the included Interest packet. The annotation can describe the reason.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: network NACK, Interest return.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Data packet</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A network-level packet that carries payload, uniquely identified by a name, and is directly secured.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Link</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A type of Data packet whose body contains the Name of another Data packet. This inner Name is often a Full Name, i.e., it specifies the Packet ID of the corresponding Data packet, but this is not a requirement.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: pointer.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Manifest</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. This has the additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all Data contained in the linked Data packets.  </li>
+</ul>
+<h1 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5.</a> <a href="#terms-related-to-name-types" id="terms-related-to-name-types">Terms related to Name Types</a></h1>
+<p><strong>Name</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A Data packet identifier. An ICN name is hierarchical (a sequence of name components) and usually is semantically meaningful, making it expressive, flexible and application-specific (akin to a HTTP URL). A Name may encode information about application context, semantics, locations (topological, geographical, hyperbolic, etc.), a service name, etc.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: data name, interest name, content name.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Name component</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: name segment (as in CCNx).  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Packet ID</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A unique cryptographic identifier for a Data packet. Typically, this is a cryptographic hash digest of a data packet (such as SHA256), including its name, payload, meta information, and signature.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: implicit digest.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Selector</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A mechanism (condition) to select an individual Data packet from a collection of Data packets that match a given Interest that requests data using a prefix or exact Name.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: interest selector, restrictor, interest restrictor.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Nonce</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A field of an Interest packet that transiently names an Interest instance (instance of Interest for a given name).  </li>
+</ul>
+<p><strong>Exact Name</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A name that is encoded inside a Data packet and which typically uniquely identifies this Data packet.  </li>
+</ul>
+<p><strong>Full Name</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>An exact Name with the Packet ID of the corresponding Data packet.  </li>
+</ul>
+<p><strong>Prefix Name</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A Name that includes a partial sequence of Name components (starting from the first one) of a Name encoded inside a Data packet.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: prefix.  </li>
+    </ul>
+  </li>
+</ul>
+<h1 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6.</a> <a href="#terms-related-to-name-usage" id="terms-related-to-name-usage">Terms related to Name Usage</a></h1>
+<p><strong>Naming conventions</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A convention, agreement, or specification for the Data packet naming. a Naming convention structures a namespace.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: Naming scheme, ICN naming scheme, namespace convention </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Hierarchically structured naming</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>The naming scheme that assigns and interprets a Name as a sequence of labels (Name components) with hierarchical structure without an assumption of a single administrative root. A structure provides useful context information for the Name.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: hierarchical naming, structured naming.  </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Flat naming</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>The naming scheme that assigns and interprets a Name as a single label (Name component) without any internal structure. This can be considered a special (or degenerated) case of structured names.  </li>
+</ul>
+<p><strong>Segmentation</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured names, each created data packet has a common prefix and additional component representing the segment (chunk) number.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: chunking </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Versioning</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of assigning a unique Name to the revision of the content carried in the Data packet. When using a hierarchically structured Name, the version of the Data packet can be carried in a dedicated Name component (e.g., prefix identifies data, unique version component identifies the revision of the data).  </li>
+</ul>
+<p><strong>Fragmentation</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of splitting PDUs into frames so that they can be transmitted over the link with a smaller MTU size.  </li>
+</ul>
+<h1 id="rfc.section.3.7"><a href="#rfc.section.3.7">3.7.</a> <a href="#terms-related-to-data-centric-security" id="terms-related-to-data-centric-security">Terms related to Data-Centric Security</a></h1>
+<p><strong>Data-Centric Security</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A security property associated with the Data packet, including data (Data-Centric) integrity, authenticity, and optionally confidentiality. These security properties stay with the data packet regardless where it is stored and how it is retrieved.  </li>
+</ul>
+<p/>
+
+<ul class="empty">
+  <li>
+    <ul class="empty">
+      <li>Common aliases include: directly securing data packet </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Data Integrity</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>A cryptographic mechanism to ensure the consistency of the Data packet bits. The Data integrity property validates that the Data packet content has not been corrupted during transmission, e.g., over lossy channels.  </li>
+</ul>
+<p><strong>Data Authenticity</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>A cryptographic mechanism to ensure trustworthiness of a Data packet, based on a selected (e.g., by a consumer/producer) trust model. Typically, data authenticity is assured through the use of asymmetric cryptographic signatures (e.g., RSA, ECDSA), but can also be realized using symmetric signatures (e.g., HMAC) within trusted domains.  </li>
+</ul>
+<p/>
+<p><strong>Data Confidentiality</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>A cryptographic mechanism to ensure secrecy of a Data packet.  Data confidentiality includes separate mechanisms: content confidentiality and Name confidentiality </li>
+</ul>
+<p><strong>Content Confidentiality</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>A cryptographic mechanism to prevent an unauthorized party to get access to the plain-text payload of a Data packet. Can be realized through encryption (symmetric, asymmetric, hybrid) and proper distribution of the decryption keys to authorized parties.  </li>
+</ul>
+<p><strong>Name Confidentiality</strong> </p>
+<p/>
+
+<ul class="empty">
+  <li>A cryptographic mechanism to prevent an observer of Interest-Data exchanges (e.g., intermediate router) from gaining detailed meta information about the Data packet. This mechanism can be realized using encryption (same as content confidentiality) or obfuscation mechanisms.  </li>
+</ul>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#semantics-and-usage" id="semantics-and-usage">Semantics and Usage</a></h1>
+<p id="rfc.section.4.p.1">The terminology described above is the manifestation of intended semantics of NDN and CCNx operations (what do we expect the network to do?). In this section we summarize the most commonly proposed use cases and interpretations.  </p>
+<h1 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1.</a> <a href="#data-transfer" id="data-transfer">Data Transfer</a></h1>
+<p id="rfc.section.4.1.p.1">The networking view of NDN and CCNx is that the request/reply protocol implements a basic, unreliable data transfer service for single, named packets.  </p>
+<h1 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2.</a> <a href="#data-transport" id="data-transport">Data Transport</a></h1>
+<p id="rfc.section.4.2.p.1">Data transfer can be turned into a data transport service for application-level objects by additional logic. This transport logic must understand and construct the series of names needed to reassemble the segmented object. Various flavors of transport can be envisaged (reliable, streaming, mailbox, etc).  </p>
+<h1 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3.</a> <a href="#lookup-service" id="lookup-service">Lookup Service</a></h1>
+<p id="rfc.section.4.3.p.1">In a more distributed systems view of the basic request/reply protocol, NDN and CCNx provide a distributed lookup service: given a key value (=name), the service will return the corresponding value.  </p>
+<h1 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4.</a> <a href="#database-access" id="database-access">Database Access</a></h1>
+<p id="rfc.section.4.4.p.1">A lookup service can be turned into into a database access protocol by using the namespace structure to specify names as access keys into a database. A name prefix therefore stands for a collection or table of a database, while the rest of the name specifies the query expression to be executed.  </p>
+<h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> <a href="#remote-procedure-call" id="remote-procedure-call">Remote Procedure Call</a></h1>
+<p id="rfc.section.4.5.p.1">The names as defined here for Interests and Data can refer to Remote Procedure call functions, their input arguments, and their results.  </p>
+<p><strong>Interest match in FIB (longest prefix match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.  </li>
+</ul>
+<p><strong>Interest match in PIT (exact match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding a PIT entry that stores the same Name as specified in the Interest (including Interest restrictions, if any).  </li>
+</ul>
+<p><strong>Data match in PIT (all match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding (a set of) PIT entries that can be satisfied with the specified Data packet.  </li>
+</ul>
+<p><strong>Interest match in CS (any match)</strong>: </p>
+<p/>
+
+<ul class="empty">
+  <li>A process of finding an entry in router&#8217;s Content Store that can satisfy the specified Interest.  </li>
+</ul>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
+<p id="rfc.section.5.p.1">There are no IANA considerations related to this document.  </p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
+<p id="rfc.section.6.p.1">This document introduces no new security considerations.  </p>
+<h1 id="rfc.references"><a href="#rfc.references">7.</a> Informational References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="I-D.irtf-icnrg-disaster">[I-D.irtf-icnrg-disaster]</b>
+      </td>
+      <td class="top"><a>Seedorf, J.</a>, <a>Arumaithurai, M.</a>, <a>Tagami, A.</a>, <a>Ramakrishnan, K.</a> and <a>N. Blefari-Melazzi</a>, "<a href="http://tools.ietf.org/html/draft-irtf-icnrg-disaster-04">Research Directions for Using ICN in Disaster Scenarios</a>", Internet-Draft draft-irtf-icnrg-disaster-04, February 2019.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7476">[RFC7476]</b>
+      </td>
+      <td class="top"><a>Pentikousis, K.</a>, <a>Ohlman, B.</a>, <a>Corujo, D.</a>, <a>Boggia, G.</a>, <a>Tyson, G.</a>, <a>Davies, E.</a>, <a>Molinaro, A.</a> and <a>S. Eum</a>, "<a href="http://tools.ietf.org/html/rfc7476">Information-Centric Networking: Baseline Scenarios</a>", RFC 7476, DOI 10.17487/RFC7476, March 2015.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7927">[RFC7927]</b>
+      </td>
+      <td class="top"><a>Kutscher, D.</a>, <a>Eum, S.</a>, <a>Pentikousis, K.</a>, <a>Psaras, I.</a>, <a>Corujo, D.</a>, <a>Saucez, D.</a>, <a>Schmidt, T.</a> and <a>M. Waehlisch</a>, "<a href="http://tools.ietf.org/html/rfc7927">Information-Centric Networking (ICN) Research Challenges</a>", RFC 7927, DOI 10.17487/RFC7927, July 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7933">[RFC7933]</b>
+      </td>
+      <td class="top"><a>Westphal, C.</a>, <a>Lederer, S.</a>, <a>Posch, D.</a>, <a>Timmerer, C.</a>, <a>Azgin, A.</a>, <a>Liu, W.</a>, <a>Mueller, C.</a>, <a>Detti, A.</a>, <a>Corujo, D.</a>, <a>Wang, J.</a>, <a>Montpetit, M.</a> and <a>N. Murray</a>, "<a href="http://tools.ietf.org/html/rfc7933">Adaptive Video Streaming over Information-Centric Networking (ICN)</a>", RFC 7933, DOI 10.17487/RFC7933, August 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7945">[RFC7945]</b>
+      </td>
+      <td class="top"><a>Pentikousis, K.</a>, <a>Ohlman, B.</a>, <a>Davies, E.</a>, <a>Spirou, S.</a> and <a>G. Boggia</a>, "<a href="http://tools.ietf.org/html/rfc7945">Information-Centric Networking: Evaluation and Security Considerations</a>", RFC 7945, DOI 10.17487/RFC7945, September 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC8569">[RFC8569]</b>
+      </td>
+      <td class="top"><a>Mosko, M.</a>, <a>Solis, I.</a> and <a>C. Wood</a>, "<a href="http://tools.ietf.org/html/rfc8569">Content-Centric Networking (CCNx) Semantics</a>", RFC 8569, DOI 10.17487/RFC8569, July 2019.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC8609">[RFC8609]</b>
+      </td>
+      <td class="top"><a>Mosko, M.</a>, <a>Solis, I.</a> and <a>C. Wood</a>, "<a href="http://tools.ietf.org/html/rfc8609">Content-Centric Networking (CCNx) Messages in TLV Format</a>", RFC 8609, DOI 10.17487/RFC8609, July 2019.</td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgments</a></h1>
+<p id="rfc.section.A.p.1">Mark Mosco provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-Jose Montpetit did a through IRSG review, which helped a lot to finalise the text.</p>
+<h1 id="rfc.authors">
+  <a href="#rfc.authors">Authors' Addresses</a>
+</h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Bastiaan Wissingh</span> 
+	  <span class="n hidden">
+		<span class="family-name">Wissingh</span>
+	  </span>
+	</span>
+	<span class="org vcardline">TNO</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:bastiaan.wissingh@tno.nl">bastiaan.wissingh@tno.nl</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Christopher A. Wood</span> 
+	  <span class="n hidden">
+		<span class="family-name">Wood</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of California Irvine</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:woodc1@uci.edu">woodc1@uci.edu</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Alex Afanasyev</span> 
+	  <span class="n hidden">
+		<span class="family-name">Afanasyev</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Florida International University</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:aa@cs.fiu.edu">aa@cs.fiu.edu</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Lixia Zhang</span> 
+	  <span class="n hidden">
+		<span class="family-name">Zhang</span>
+	  </span>
+	</span>
+	<span class="org vcardline">UCLA</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:lixia@cs.ucla.edu">lixia@cs.ucla.edu</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">David Oran</span> 
+	  <span class="n hidden">
+		<span class="family-name">Oran</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Network Systems Research & Design</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:daveoran@orandom.net">daveoran@orandom.net</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Christian Tschudin</span> 
+	  <span class="n hidden">
+		<span class="family-name">Tschudin</span>
+	  </span>
+	</span>
+	<span class="org vcardline">University of Basel</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:christian.tschudin@unibas.ch">christian.tschudin@unibas.ch</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>

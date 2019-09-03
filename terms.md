@@ -14,7 +14,7 @@
 
 **ICN Interface**:
 
-> A generalization of the network interface that can represent a physical network interface (ethernet, wifi, bluetooth adapter, etc.), an overlay inter-node channel (IP/UDP tunnel, etc.), or an intra-node IPC channel to an application (unix socket, shared memory, intents, etc.).
+> A generalization of the network interface that can represent a physical network interface (ethernet, wifi, bluetooth adapter, etc.), an overlay inter-node channel (IP/UDP tunnel, etc.), or an intra-node inter-process communication (IPC) channel to an application (unix socket, shared memory, intents, etc.).
 
   >> Common aliases include: face.
 
@@ -64,7 +64,7 @@
 
 **Interest forwarding**:
 
-> A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, creating an entry in PIT. The forwarding decision is made by the Forwarding Strategy.
+> A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, creating an entry in the PIT. The forwarding decision is made by the Forwarding Strategy.
 
 **Interest aggregation**:
 
@@ -166,9 +166,9 @@ Cache poisoning
 
 **Interest packet**:
 
-> A network-level packet that expresses the request for a data packet using either an exact name or a name prefix. An interest packet may optionally carry a set of additional restrictions (e.g., interest selectors). An interest may be associated with additional information to facilitate forwarding and can include Interest lifetime, hop limit, forwarding hints, labels, etc. In different ICN designs, the set of additional associated information may vary.
+> A network-level packet that expresses the request for a data packet using either an exact name or a name prefix. An Interest packet may optionally carry a set of additional restrictions (e.g., Interest selectors). An Interest may be associated with additional information to facilitate forwarding and can include Interest lifetime, hop limit, forwarding hints, labels, etc. In different ICN designs, the set of additional associated information may vary.
 
-  >> Common aliases include: interest, interest message, information request
+  >> Common aliases include: Interest, Interest message, information request
 
 **Interest Nack**:
 
@@ -204,11 +204,11 @@ Cache poisoning
 
 > A sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.
 
-  >> Common aliases include: name segment (as in CCN).
+  >> Common aliases include: name segment (as in CCNx).
 
 **Packet ID**:
 
-> a unique cryptographic identifier for a Data packet.  Typically, this is a cryptographic hash digest of a data packet (such as SHA256), including its name, payload, meta information, and signature.
+> A unique cryptographic identifier for a Data packet.  Typically, this is a cryptographic hash digest of a data packet (such as SHA256), including its name, payload, meta information, and signature.
 
   >> Common aliases include: implicit digest.
 
@@ -248,7 +248,7 @@ Cache poisoning
 
 **Naming conventions**:
 
-> A convention, agreement, or specification for the Data packet naming.  Naming convention structures a namespace.
+> A convention, agreement, or specification for the Data packet naming.  a Naming convention structures a namespace.
 
   >> Common aliases include: Naming scheme, ICN naming scheme, namespace convention
 
