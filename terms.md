@@ -294,7 +294,7 @@ Cache poisoning
 
 **Data Integrity**
 
-> A cryptographic mechanism to ensure the consistency of the Data packet bits. The Data integrity property validates that the Data packet content has not been corrupted during transmission, e.g., over lossy channels.
+> A cryptographic mechanism to ensure the consistency of the Data packet bits. The Data integrity property validates that the Data packet content has not been corrupted during transmission, e.g., over lossy or otherwise unreliable paths.
 
 **Data Authenticity**
 

@@ -5,7 +5,7 @@
 ICNRG                                                        B. Wissingh
 Internet-Draft                                                       TNO
 Intended status: Informational                                   C. Wood
-Expires: March 6, 2020                   University of California Irvine
+Expires: March 10, 2020                  University of California Irvine
                                                             A. Afanasyev
                                         Florida International University
                                                                 L. Zhang
@@ -14,7 +14,7 @@ Expires: March 6, 2020                   University of California Irvine
                                        Network Systems Research & Design
                                                              C. Tschudin
                                                      University of Basel
-                                                       September 3, 2019
+                                                       September 7, 2019
 
 
      Information-Centric Networking (ICN): CCNx and NDN Terminology
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 6, 2020.
+   This Internet-Draft will expire on March 10, 2020.
 
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 1]
+Wissingh, et al.         Expires March 10, 2020                 [Page 1]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 2]
+Wissingh, et al.         Expires March 10, 2020                 [Page 2]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -165,7 +165,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 3]
+Wissingh, et al.         Expires March 10, 2020                 [Page 3]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -221,7 +221,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 4]
+Wissingh, et al.         Expires March 10, 2020                 [Page 4]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -256,7 +256,8 @@ Internet-Draft               ICN Terminology              September 2019
       receives an Interest packet, it checks its CS and PIT to find a
       matching entry; if no match is found, the node records the
       Interest in its PIT and forwards the Interest to the next hop(s)
-      towards the requested content based on the information in its FIB.
+      towards the requested content, based on the information in its
+      FIB.
 
 3.  Terms by category
 
@@ -273,15 +274,15 @@ Internet-Draft               ICN Terminology              September 2019
 
       After a data packet is created, it cannot change.  If the content
       carried in the data packet is mutable, versioning should be used,
-      so that each version uniquely identifies an immutable instance of
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 5]
+Wissingh, et al.         Expires March 10, 2020                 [Page 5]
 
 Internet-Draft               ICN Terminology              September 2019
 
 
+      so that each version uniquely identifies an immutable instance of
       the content.  This allows disambiguation of coordination in
       distributed systems.
 
@@ -332,8 +333,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-
-Wissingh, et al.          Expires March 6, 2020                 [Page 6]
+Wissingh, et al.         Expires March 10, 2020                 [Page 6]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -389,7 +389,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 7]
+Wissingh, et al.         Expires March 10, 2020                 [Page 7]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -445,7 +445,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 8]
+Wissingh, et al.         Expires March 10, 2020                 [Page 8]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -501,7 +501,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                 [Page 9]
+Wissingh, et al.         Expires March 10, 2020                 [Page 9]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -557,7 +557,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 10]
+Wissingh, et al.         Expires March 10, 2020                [Page 10]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -613,7 +613,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 11]
+Wissingh, et al.         Expires March 10, 2020                [Page 11]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -669,7 +669,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 12]
+Wissingh, et al.         Expires March 10, 2020                [Page 12]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -725,7 +725,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 13]
+Wissingh, et al.         Expires March 10, 2020                [Page 13]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -753,7 +753,7 @@ Internet-Draft               ICN Terminology              September 2019
       A cryptographic mechanism to ensure the consistency of the Data
       packet bits.  The Data integrity property validates that the Data
       packet content has not been corrupted during transmission, e.g.,
-      over lossy channels.
+      over lossy or otherwise unreliable paths.
 
    *Data Authenticity*
 
@@ -781,7 +781,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 14]
+Wissingh, et al.         Expires March 10, 2020                [Page 14]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -837,7 +837,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 15]
+Wissingh, et al.         Expires March 10, 2020                [Page 15]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -893,7 +893,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 16]
+Wissingh, et al.         Expires March 10, 2020                [Page 16]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -949,7 +949,7 @@ Internet-Draft               ICN Terminology              September 2019
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 17]
+Wissingh, et al.         Expires March 10, 2020                [Page 17]
 
 Internet-Draft               ICN Terminology              September 2019
 
@@ -1005,4 +1005,4 @@ Authors' Addresses
 
 
 
-Wissingh, et al.          Expires March 6, 2020                [Page 18]
+Wissingh, et al.         Expires March 10, 2020                [Page 18]
