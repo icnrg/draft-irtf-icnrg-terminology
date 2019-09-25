@@ -12,8 +12,8 @@
 <!ENTITY rfc.7927    PUBLIC '' '../bib/reference.RFC.7927.xml'>
 <!ENTITY rfc.7945    PUBLIC '' '../bib/reference.RFC.7945.xml'>
 <!ENTITY rfc.7933    PUBLIC '' '../bib/reference.RFC.7933.xml'>
-<!ENTITY I-D.irtf-icnrg-ccnxmessages           PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxmessages.xml'>
-<!ENTITY I-D.irtf-icnrg-ccnxsemantics          PUBLIC '' '../bib/reference.I-D.irtf-icnrg-ccnxsemantics.xml'>
+<!ENTITY rfc.8569	 PUBLIC '' '../bib/reference.RFC.8569.xml'>
+<!ENTITY rfc.8609	 PUBLIC '' '../bib/reference.RFC.8609.xml'>
 <!ENTITY I-D.irtf-icnrg-disaster               PUBLIC '' '../bib/reference.I-D.irtf-icnrg-disaster.xml'>
 ]>
 
@@ -28,7 +28,7 @@
 <?rfc text-list-symbols="-o*+"?>
 <rfc category="info" docName="draft-irtf-icnrg-terminology-@@REVISION@@">
   <front>
-    <title abbrev="ICN Terminology">Information-Centric Networking (ICN): CCN and NDN Terminology</title>
+    <title abbrev="ICN Terminology">Information-Centric Networking (ICN): CCNx and NDN Terminology</title>
 
     <author fullname="Bastiaan Wissingh" initials="B.F." surname="Wissingh">
       <organization>TNO</organization>
@@ -78,7 +78,7 @@
       </address>
     </author>
 
-    <date month="June" year="2019"/>
+    <date month="September" year="2019"/>
 
     <area>IRTF</area>
 
@@ -106,13 +106,13 @@
       &rfc.7927;
       &rfc.7945;
       &rfc.7933;
-      &I-D.irtf-icnrg-ccnxmessages;
-      &I-D.irtf-icnrg-ccnxsemantics;
+      &rfc.8569;
+      &rfc.8609;
       &I-D.irtf-icnrg-disaster;
     </references>
 
     <section anchor="acknowledgements" title="Acknowledgments">
-      <t>Mark Mosco, ...</t>
+      <t>Mark Mosco provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-Jose Montpetit did a through IRSG review, which helped a lot to finalise the text.</t>
     </section>
   </back>
 </rfc>
