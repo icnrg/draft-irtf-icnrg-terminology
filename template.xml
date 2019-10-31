@@ -7,8 +7,8 @@
 <!ENTITY RFC7927    PUBLIC '' '../bib/reference.RFC.7927.xml'>
 <!ENTITY RFC7945    PUBLIC '' '../bib/reference.RFC.7945.xml'>
 <!ENTITY RFC7933    PUBLIC '' '../bib/reference.RFC.7933.xml'>
-<!ENTITY RFC8569	 PUBLIC '' '../bib/reference.RFC.8569.xml'>
-<!ENTITY RFC8609	 PUBLIC '' '../bib/reference.RFC.8609.xml'>
+<!ENTITY RFC8569	PUBLIC '' '../bib/reference.RFC.8569.xml'>
+<!ENTITY RFC8609 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8609.xml">
 <!ENTITY I-D.irtf-icnrg-disaster PUBLIC '' '../bib/reference.I-D.irtf-icnrg-disaster.xml'>
 ]>
 
@@ -67,7 +67,7 @@
       </address>
     </author>
 
-    <date month="October" year="2019"/>
+    <date month="November" year="2019"/>
 
     <area>IRTF</area>
     <workgroup>ICNRG</workgroup>
@@ -85,7 +85,7 @@
 	
 	<t>As the work on this topic continues to evolve, many new terms are emerging. The goal of this document is to collect the key terms with a corresponding definition as they are used in the CCNx and NDN projects. Other ICN projects such as NetInf, or MobilityFirst are not covered and may be the subject of other documents.</t>
 	
-	<t>To help provide context for the individual defined terms, in this draft we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <xref target="a-sketch-of-the-big-picture-of-icn"/>, after which, in <xref target="terms-by-category"/>, ICN related terms are listed by different categories.</t>
+	<t>To help provide context for the individual defined terms, in this document we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <xref target="a-sketch-of-the-big-picture-of-icn"/>, after which, in <xref target="terms-by-category"/>, ICN related terms are listed by different categories. Readers should be aware that in this orgnization some terms may be used in other definitions before they themselves are defined.</t>
 	
 	<t>While this terminology document describes both confidentiality and integrity-related terms, it should be noted that ICN architectures like NDN and CCNx generally do not provide data confidentiality, which is treated in these architectures as an application layer concern.</t>
 	
@@ -116,32 +116,32 @@ requestor         zero or more           data sources or
   
   <t><spanx style="strong">Request-Reply Protocol (Interest and Data Packet)</spanx>:</t>
   <t><list style="empty">
-		<t>An ICN’s lookup service is implemented by defining two types of network packet formats: Interest packets that request content by name, and Data packets that carry the requested content. The returned Data packet must match the request’s parameters (e.g., having a partially or fully matching name). If the request is ambiguous and several Data packets would satisfy the request, the ICN network returns only one matching Data packet (flow balance between Interest and Data packets over individual links).</t>
+		<t>An ICN’s lookup service is implemented by defining two types of network packet formats: Interest packets that request content by name, and Data packets that carry the requested content. The returned Data packet must match the request’s parameters (e.g., having a partially or fully matching name). If the request is ambiguous and several Data packets would satisfy the request, the ICN network returns only one matching Data packet (thus achieving flow balance between Interest and Data packets over individual layer 2 interfaces).</t>
 	</list></t>
   
-	<t><spanx style="strong">Packet and Content Names</spanx></t>
+	<t><spanx style="strong">Packet and Content Names</spanx>:</t>
 	<t><list style="empty">
 		<t>Without a strong cryptographic binding between the name of a Data packet and its content, Data packet names would be useless for fetching specific content. In ICN, verification of a Data packet’s name-to-content binding is achieved through cryptographic means, either by (1) a cryptographic signature that explicitly binds an application-chosen name to a Data packet’s content, or (2) relying on an implicit name (cryptographic hash of the Data packet with or without application-chosen name) that the data consumer obtained through other means.</t>
 	</list></t>
 
 	<t><spanx style="strong">Data Authenticity and Encryption</spanx>:</t>
 	<t><list style="empty">
-		<t>Any data consumer and network element can (in principle) validate the authenticity of a Data packet by verifying its cryptographic name-to-content binding. Note that data authenticity is distinct from data trustworthiness, though the two concepts are related.  A packet is authentic if it has a valid name-to-content binding, but it may still be unwise to "trust" the content for any particular purpose.</t>
+		<t>Any data consumer or network element can (in principle) validate the authenticity of a Data packet by verifying its cryptographic name-to-content binding. Note that data authenticity is distinct from data trustworthiness, though the two concepts are related.  A packet is authentic if it has a valid name-to-content binding, but it may still be unwise to "trust" the content for any particular purpose.</t>
 	</list></t>
 
 	<t><spanx style="strong">Trust</spanx>:</t>
 	<t><list style="empty">
-		<t>Data authenticity is distinct from data trustworthiness, though the two concepts are related. A packet is authentic if it has a valid name-to-content binding. A packet is trustworthy, i.e., it comes from a reputable or trusted origin, if this binding is valid in the context of a trust model.</t>
+		<t>Data authenticity is distinct from data trustworthiness, though the two concepts are related. A packet is authentic if it has a valid name-to-content binding. A packet is trustworthy, i.e., it comes from a reputable or trusted origin, if this binding is valid in the context of a trust model. <xref target="security-considerations"/> discusses this further.</t>
 	</list></t>
 	
 	<t><spanx style="strong">Segmenting and Versioning</spanx>:</t>
 	<t><list style="empty">
-		<t>An ICN network will be engineered for some packet size limit. As application-level data objects will often be considerably larger, objects must be segmented into multiple Data packets. The names for these Data packets can, for example, be constructed by choosing one application-level object name to which a different suffix is added for each segment. The same method can be used to handle different versions of an application-level object by including a version number into the name of the overall object.</t>
+		<t>An ICN network will be engineered for some packet size limit. As application-level data objects will often be considerably larger, objects must be segmented into multiple Data packets. The names for these Data packets can, for example, be constructed by choosing one application-level object name to which a different suffix is added for each segment. The same method can be used to handle different versions of an application-level object by including a version number in the name of the overall object.</t>
 	</list></t>
 	
 	<t><spanx style="strong">Packet and Frame</spanx>:</t>
 	<t><list style="empty">
-		<t>NDN and CCNx introduce Protocol Data Units (PDUs) which typically are larger than the maximum transmission unit of the underlying networking technology. We refer to PDUs as packets and the (potentially fragmented) packet parts that traverse MTU-bound links as frames. Handling link-layer technologies which lead to fragmentation of ICN packets is done inside the ICN network and is not visible at the service interface.</t>
+		<t>NDN and CCNx introduce Protocol Data Units (PDUs) which typically are larger than the maximum transmission unit of the underlying networking technology. We refer to PDUs as packets and the (potentially fragmented) packet parts that traverse MTU-bound layer 2 interfaces as frames. Handling layer 2 technologies which lead to fragmentation of ICN packets is done inside the ICN network and is not visible at the service interface.</t>
 	</list></t>
 	
 	<t><spanx style="strong">ICN Node</spanx>:</t>
@@ -161,12 +161,12 @@ requestor         zero or more           data sources or
     
 		<t><spanx style="strong">Information-Centric Networking (ICN)</spanx>:</t>
 		<t><list style="empty">
-			<t>A networking architecture that retrieves Data packets as response to Interest packets. Content-Centric Networking (CCNx 1.x) and Named Data Networking (NDN) are two realizations (designs) of the ICN architecture.</t>
+			<t>A networking architecture that retrieves Data packets as response to Interest packets. Content-Centric Networking (CCNx 1.x) and Named Data Networking (NDN) are two realizations (designs) of an ICN architecture.</t>
 		</list></t>
 		
-		<t><spanx style="strong">Data packet immutability</spanx>:</t>
+		<t><spanx style="strong">Data packet Immutability</spanx>:</t>
 		<t><list style="empty">
-			<t>After a data packet is created, the cryptographic hash binding the name to the content ensures that neither the content nor the name can change without that hange being detected and the packet discarded. If the content carried in a data packet is intended to be mutable, versioning of the name should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of coordination in distributed systems.</t>
+			<t>After a data packet is created, the cryptographic hash binding the name to the content ensures that if either the content or the name changes, that change will be detected and the packet discarded. If the content carried in a data packet is intended to be mutable, versioning of the name should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of various versions of content such that coordination among the various instances in a distributed system can be achieved.</t>
 		</list></t>
 	</section>
 	
@@ -214,7 +214,7 @@ requestor         zero or more           data sources or
     
     	<t><spanx style="strong">ICN Data Mule</spanx>:</t>
     	<t><list style="empty">
-    		<t>An ICN entity that temporarily stores and potentially carries an Interest or Data packet before forwarding it to next ICN entity. Note do not have all the properties of data mules as employed in the Delay Tolerant Networking <xref target="RFC4838">(DTN)</xref> specifications.</t>
+    		<t>An ICN entity that temporarily stores and potentially carries an Interest or Data packet before forwarding it to next ICN entity. Note that such ICN data mules do not have all the properties of data mules as employed in the Delay Tolerant Networking <xref target="RFC4838">(DTN)</xref> specifications.</t>
     	</list></t>
 	</section>
   
@@ -252,7 +252,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Interest forwarding</spanx>:</t>
 		<t><list style="empty">
-			<t>A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, creating an entry in the PIT. The forwarding decision is made by the Forwarding Strategy.</t>
+			<t>A process of forwarding Interest packets using the Names carried in the Interests. In case of Stateful forwarding, this also involves creating an entry in the PIT. The forwarding decision is made by the Forwarding Strategy.</t>
 		</list></t>
 		
 		<t><spanx style="strong">Interest aggregation</spanx>:</t>
@@ -277,7 +277,7 @@ requestor         zero or more           data sources or
 
     	<t><spanx style="strong">Interest match in FIB (longest prefix match)</spanx>:</t>
     	<t><list style="empty">
-    		<t>A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.</t>
+    		<t>A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name. See <xref target="terms-related-to-name-types"/> for terms related to name prefixes</t>
     	</list></t>
 
 		<t><spanx style="strong">Interest match in PIT (exact match)</spanx>:</t>
@@ -380,7 +380,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Data packet</spanx>:</t>
 		<t><list style="empty">
-			<t>A network-level packet that carries payload, uniquely identified by a name, and is directly secured through cryptographic sigtnature mechanisms.</t>
+			<t>A network-level packet that carries payload, uniquely identified by a name, and is directly secured through cryptographic signature mechanisms.</t>
 		</list></t>
 		<t><list style="empty">
 			<t><list style="empty">
@@ -400,7 +400,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Manifest</spanx>:</t>
 		<t><list style="empty">
-			<t>A type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. This has the additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all Data contained in the linked Data packets.</t>
+			<t>A type of Data packet that contains Full Name Links to one or more Data Packets. Manifests group collections of related Data packets under a single Name. Manifests allow both large Data objects to be conveniently split into individual Content Objects under one name, and to represent sets of related Content Objects as a form of “directory”. Manifests have the additional benefit of amortizing the signature verification cost for each Data packet referenced by the inner Links. Manifests typically contain additional metadata, e.g., the size (in bytes) of each linked Data packet and the cryptographic hash digest of all Data contained in the linked Data packets.</t>
 		</list></t>
 	</section>
 	
@@ -418,7 +418,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Name component</spanx>:</t>
 		<t><list style="empty">
-			<t>A sequence of octets and optionally a numeric type representing a single label in the hierarchical structured name.</t>
+			<t>A sequence of bytes and optionally a numeric type representing a single label in the hierarchical structured name.</t>
 		</list></t>
 		<t><list style="empty">
 			<t><list style="empty">
@@ -497,12 +497,12 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Flat naming</spanx>:</t>
 		<t><list style="empty">
-			<t>The naming scheme that assigns and interprets a Name as a single label (Name component) without any internal structure. This can be considered a special (or degenerated) case of structured names.</t>
+			<t>The naming scheme that assigns and interprets a Name as a single label (Name component) without any internal structure. This can be considered a special (or degenerate) case of structured names.</t>
 		</list></t>
 			
 		<t><spanx style="strong">Segmentation</spanx>:</t>
 		<t><list style="empty">
-			<t>A process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured names, each created data packet has a common prefix and additional component representing the segment (chunk) number.</t>
+			<t>A process of splitting large application content into a set of uniquely named data packets. When using hierarchically structured names, each created data packet has a common prefix and an additional component representing the segment (chunk) number.</t>
 		</list></t>
 		<t><list style="empty">
 			<t><list style="empty">
@@ -517,7 +517,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Fragmentation</spanx>:</t>
 		<t><list style="empty">
-			<t>A process of splitting PDUs into frames so that they can be transmitted over the link with a smaller MTU size.</t>
+			<t>A process of splitting PDUs into Frames so that they can be transmitted over a layer 2 interface with a smaller MTU size.</t>
 		</list></t>
 	
 	</section>
@@ -582,8 +582,9 @@ requestor         zero or more           data sources or
     </section>
     
     <section title="Remote Procedure Call" anchor="remote-procedure-call">
-    	<t>The names as defined here for Interests and Data can refer to Remote Procedure call functions, their input arguments, and their results.</t>
-    	
+    	<t>The names as defined in this document for Interests and Data can refer to Remote Procedure call functions, their input arguments, and their results. For a comprehensive view of how to construct RPC or other remote invocation systems, see the ACM ICN paper on <xref target="RICE"/>. These capabilities can be further extended into a full distributed computing infrastructure, such as that proposed in the ACM ICN paper <xref target="CFN"/>.</t>
+
+<!-->    	
     	<t><spanx style="strong">Interest match in FIB (longest prefix match)</spanx>:</t>    <t><list style="empty">
     		<t>A process of finding a FIB entry with the longest Name (in terms of Name components) that is a prefix of the specified Name.</t>
     	</list></t>
@@ -602,6 +603,10 @@ requestor         zero or more           data sources or
     	<t><list style="empty">
     		<t>A process of finding an entry in router’s Content Store that can satisfy the specified Interest.</t>
     	</list></t>
+-->
+    </section>
+    <section title="Publish/Subscribe" anchor="publish-subscribe">
+    	<t>The names as defined in this document for Interests and Data can refer to data collections to be subscribed and individual data objects to be published in a Publish-Subscribe application architecture.  For a fully-worked example of how to construct such an ICN-based system, see the ACM ICN paper <xref target="LessonsLearned"/>.</t>
     </section>
 </section>
 
@@ -610,7 +615,9 @@ requestor         zero or more           data sources or
 </section>
 
 <section title="Security Considerations" anchor="security-considerations">
-	<t>This document introduces no new security considerations.</t>
+	<t>While the terms defined in this specification do not in and of themselves present new security considerations, the architectures which utilize the terms most certainly do. Readers should look at those specifications (e.g. <xref target="RFC8569"/>, <xref target="NDN"/>) where various security considerations are addressed in detail.</t>
+	
+	<t>Some of the terms in this document use the words "trust", "trustworthy", or "trust model". We intend that these have their colloquial meanings, however much work on trust, and specifically on trust schemas for ICN architectures has been published in the last few years. For example, it is useful to look at <xref target="SchematizingTrust"/> for more information on the approachs taken to formalize notions of trust for current NDN and CCNx systems.</t>
 </section>
 
 </middle>
@@ -619,17 +626,140 @@ requestor         zero or more           data sources or
 	   	&RFC4838;
 	   	&RFC4949;
 	   	&RFC6234;
-		&RFC7476;
+<!--		&RFC8569;
+   	&RFC8609; -->
+
+<reference anchor="RFC8569" target="https://www.rfc-editor.org/info/rfc8569">
+<front>
+<title>Content-Centric Networking (CCNx) Semantics</title>
+<author initials="M." surname="Mosko" fullname="M. Mosko">
+<organization/>
+</author>
+<author initials="I." surname="Solis" fullname="I. Solis">
+<organization/>
+</author>
+<author initials="C." surname="Wood" fullname="C. Wood">
+<organization/>
+</author>
+<date year="2019" month="July"/>
+<abstract>
+<t>
+This document describes the core concepts of the Content-Centric Networking (CCNx) architecture and presents a network protocol based on two messages: Interests and Content Objects. It specifies the set of mandatory and optional fields within those messages and describes their behavior and interpretation. This architecture and protocol specification is independent of a specific wire encoding.
+</t>
+<t>
+The protocol also uses a control message called an Interest Return, whereby one system can return an Interest message to the previous hop due to an error condition. This indicates to the previous hop that the current system will not respond to the Interest.
+</t>
+<t>
+This document is a product of the Information-Centric Networking Research Group (ICNRG). The document received wide review among ICNRG participants. Two full implementations are in active use and have informed the technical maturity of the protocol specification.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="8569"/>
+<seriesInfo name="DOI" value="10.17487/RFC8569"/>
+</reference>
+<reference anchor="RFC8609" target="https://www.rfc-editor.org/info/rfc8609">
+<front>
+<title>
+Content-Centric Networking (CCNx) Messages in TLV Format
+</title>
+<author initials="M." surname="Mosko" fullname="M. Mosko">
+<organization/>
+</author>
+<author initials="I." surname="Solis" fullname="I. Solis">
+<organization/>
+</author>
+<author initials="C." surname="Wood" fullname="C. Wood">
+<organization/>
+</author>
+<date year="2019" month="July"/>
+<abstract>
+<t>
+Content-Centric Networking (CCNx) is a network protocol that uses a hierarchical name to forward requests and to match responses to requests. This document specifies the encoding of CCNx messages in a TLV packet format, including the TLV types used by each message element and the encoding of each value. The semantics of CCNx messages follow the encoding-independent CCNx Semantics specification.
+</t>
+<t>
+This document is a product of the Information Centric Networking research group (ICNRG). The document received wide review among ICNRG participants and has two full implementations currently in active use, which have informed the technical maturity of the protocol specification.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="8609"/>
+<seriesInfo name="DOI" value="10.17487/RFC8609"/>
+</reference>
+
+    	
+		<reference anchor="NDN" target="https://named-data.net/project/execsummary/">
+			<front>
+				<title>Named Data Networking</title>
+				<author surname="NDN team"/>
+				<date year="various"/>
+			</front>
+		</reference>
+
+    </references>
+    
+    <references title="Bibliography">
+   		&RFC7476;
 		&RFC7927;
 		&RFC7945;
 		&RFC7933;
-		&RFC8569;
-    	&RFC8609;
     	&I-D.irtf-icnrg-disaster;
-    </references>
-
+		<reference anchor="NDNTLV" target="http://named-data.net/doc/ndn-tlv/">
+    		<front>
+        		<title>NDN Packet Format Specification.</title>
+				<author surname="NDN Project Team"/>
+				<date year="2016" />
+        	</front>
+    	</reference>
+    	
+    	<reference anchor="SchematizingTrust" target="http://dx.doi.org/10.1145/2810156.2810170">
+    		<front>
+    			<title>Schematizing Trust in Named Data Networking, in ACM ICN'15</title>
+    			<author surname="Yu" initials="Y."/>
+    			<author surname="Afanasyev" initials="A."/>
+    			<author surname="Clark" initials="D."/>
+    			<author surname="Claffy" initials="kc."/>
+    			<author surname="Jacobson" initials="V."/>
+    			<author surname="Zhang" initials="L."/>
+    			<date year="2015"/>
+    		</front>
+    		<seriesInfo name="DOI" value="0.1145/2810156.2810170"/>
+    	</reference>
+    	
+    	<reference anchor="RICE" target="http://dx.doi.org/10.1145/3267955.3267956">
+    		<front>
+    			<title>RICE: remote method invocation in ICN, in ACM ICN'18</title>
+    			<author surname="Krol" initials="m."/>
+    			<author surname="Habak" initials="K."/>
+    			<author surname="Kutscher" initials="D."/>
+    			<author surname="Oran" initials="D."/>
+    			<date year="2018"/>
+    		</front>
+    		<seriesInfo name="DOI" value="10.1145/3267955.3267956"/>
+    	</reference>
+    	
+    	<reference anchor="CFN" target="https://dl.acm.org/citation.cfm?id=3357395">
+    		<front>
+    			<title>Compute First Networking: Distributed Computing meets ICN, in ACM ICN'19</title>
+    			<author surname="Krol" initials="m."/>
+    			<author surname="Mastorakis" initials="S."/>
+    			<author surname="Kutscher" initials="D."/>
+    			<author surname="Oran" initials="D."/>
+    			<date year="2019"/>
+    		</front>
+    		<seriesInfo name="DOI" value="10.1145/3357150.3357395"/>
+    	</reference>
+    	
+    	<reference anchor="LessonsLearned" target="https://dl.acm.org/citation.cfm?id=3357397">
+    		<front>
+				<title>Lessons Learned Building a Secure Network Measurement Framework using Basic NDN, in ACM ICN'19</title>
+    			<author surname="Nichols" initials="K"/>
+    			<date year="2019"/>
+    		</front>
+    		<seriesInfo name="DOI" value="10.1145/3357150.3357397"/>
+    	</reference>
+    	
+	</references>
     <section anchor="acknowledgements" title="Acknowledgments">
-      <t>Mark Mosco provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-Jose Montpetit did a through IRSG review, which helped a lot to finalise the text.</t>
+      <t>Marc Mosko provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-José Montpetit did a thorough IRSG review, which helped a lot to improve the text. Further comments during the IRSG Poll from Stephen Farrell, Ari Keränen, Spencer Dawkins, Carsten Bormann, and Brian Trammell further improved the document.</t>
     </section>
 </back>
 </rfc>

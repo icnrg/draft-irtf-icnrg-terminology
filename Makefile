@@ -1,5 +1,5 @@
 NAME = draft-irtf-icnrg-terminology
-REVISION = 06
+REVISION = 07
 
 PANDOC = pandoc
 
