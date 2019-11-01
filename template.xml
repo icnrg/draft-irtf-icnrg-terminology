@@ -85,7 +85,7 @@
 	
 	<t>As the work on this topic continues to evolve, many new terms are emerging. The goal of this document is to collect the key terms with a corresponding definition as they are used in the CCNx and NDN projects. Other ICN projects such as NetInf, or MobilityFirst are not covered and may be the subject of other documents.</t>
 	
-	<t>To help provide context for the individual defined terms, in this document we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <xref target="a-sketch-of-the-big-picture-of-icn"/>, after which, in <xref target="terms-by-category"/>, ICN related terms are listed by different categories. Readers should be aware that in this orgnization some terms may be used in other definitions before they themselves are defined.</t>
+	<t>To help provide context for the individual defined terms, in this document we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <xref target="a-sketch-of-the-big-picture-of-icn"/>, after which, in <xref target="terms-by-category"/>, ICN related terms are listed by different categories. Readers should be aware that in this organization some terms may be used in other definitions before they themselves are defined.</t>
 	
 	<t>While this terminology document describes both confidentiality and integrity-related terms, it should be noted that ICN architectures like NDN and CCNx generally do not provide data confidentiality, which is treated in these architectures as an application layer concern.</t>
 	
