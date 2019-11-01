@@ -83,7 +83,7 @@
 <section title="Introduction" anchor="introduction">
 	<t>Information-centric networking (ICN) is an architecture to evolve the Internet infrastructure from the existing host-centric design to a data-centric architecture, where accessing data by name becomes the essential network primitive. The goal is to let applications refer to data independently of their location or means of transportation, which enables native multicast delivery, ubiquitous in-network caching and replication of data objects. </t>
 	
-	<t>As the work on this topic continues to evolve, many new terms are emerging. The goal of this document is to collect the key terms with a corresponding definition as they are used in the CCNx and NDN projects. Other ICN projects such as NetInf, or MobilityFirst are not covered and may be the subject of other documents.</t>
+	<t>As the work on this topic continues to evolve, many new terms are emerging. The goal of this document is to collect the key terms with a corresponding definition as they are used in the CCNx and NDN projects. Other ICN projects such as <xref target="Netinf"/>, <xref target="PSIRP"/>, or <xref target="MobilityFirst"/> are not covered and may be the subject of other documents.</t>
 	
 	<t>To help provide context for the individual defined terms, in this document we first sketch the bigger picture of an ICN network by introducing the basic concepts and identifying the major components of the architecture in <xref target="a-sketch-of-the-big-picture-of-icn"/>, after which, in <xref target="terms-by-category"/>, ICN related terms are listed by different categories. Readers should be aware that in this organization some terms may be used in other definitions before they themselves are defined.</t>
 	
@@ -702,13 +702,53 @@ This document is a product of the Information Centric Networking research group 
 		&RFC7945;
 		&RFC7933;
     	&I-D.irtf-icnrg-disaster;
+    	
 		<reference anchor="NDNTLV" target="http://named-data.net/doc/ndn-tlv/">
     		<front>
-        		<title>NDN Packet Format Specification.</title>
+        		<title>NDN Packet Format Specification</title>
 				<author surname="NDN Project Team"/>
-				<date year="2016" />
+				<date year="2016"/>
         	</front>
     	</reference>
+    	
+    	<reference anchor="Netinf" target="https://dl.acm.org/citation.cfm?id=2459643">
+    		<front>
+    			<title>Network of Information (NetInf) - An information-centric networking architecture, in Computer Communications, Volume 36, Issue 7</title>
+    			<author surname="Dannewitz" initials="C."/>
+    			<author surname="Kutscher" initials="D."/>
+    			<author surname="Ohlman" initials="B."/>
+    			<author surname="Farrell" initials="S."/>
+    			<author surname="Ahlgren" initials="B."/>
+    			<author surname="Holger" initials="K."/>
+    			<date year="2013" month="April"/>
+    		</front>
+    		<seriesInfo name="DOI" value="10.1016/j.comcom.2013.01.009"/>
+		</reference>
+		
+		<reference anchor="PSIRP" target="http://www.psirp.org/files/Deliverables/PSIRP-TR08-0001_Vision.pdf">
+			<front>
+				<title>From Design for Tussle to Tussle Networking: PSIRP Vision and Use Cases</title>
+				<author surname="Trossen" initials="D."/>
+				<author surname="Tuononen" initials="J"/>
+				<author surname="Xylomenos" initials="G."/>
+				<author surname="Sarela" initials="M."/>
+				<author surname="Zahemszky" initials="A."/>
+				<author surname="Nikander" initials="P."/>
+				<author surname="Rinta-aho" initials="T."/>
+				<date year="2008"/>
+			</front>
+		</reference>
+		
+		<reference anchor="MobilityFirst" target="https://dl.acm.org/citation.cfm?id=2412098">
+			<front>
+				<title>MobilityFirst: a robust and trustworthy mobility-centric architecture for the future internet, in ACM SIGMOBILE, Volume 16, Issue 3</title>
+				<author surname="Raychaudhuri" initials="D."/>
+				<author surname="Nagaraja" initials="K."/>
+				<author surname="Venkataramani" initials="V."/>
+				<date year="2012" month="July"/>
+				</front>
+			<seriesInfo name="DOI" value="10.1145/2412096.2412098"/>
+		</reference>
     	
     	<reference anchor="SchematizingTrust" target="http://dx.doi.org/10.1145/2810156.2810170">
     		<front>
