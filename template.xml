@@ -448,7 +448,7 @@ requestor         zero or more           data sources or
     
 		<t><spanx style="strong">Nonce</spanx>:</t>
 		<t><list style="empty">
-			<t>A field of an Interest packet that transiently names an Interest instance (instance of Interest for a given name). Note: the specifications defining nonces in NDN do not necessarily satisfy all the properties of nonces as discussed in <xref target="RFC4949"/>.</t>
+			<t>A field of an Interest packet that transiently names an Interest instance (instance of Interest for a given name). Note: the specification defining nonces in NDN do not necessarily satisfy all the properties of nonces as discussed in <xref target="RFC4949"/>.</t>
 		</list></t>
 		
 		<t><spanx style="strong">Exact Name</spanx>:</t>
