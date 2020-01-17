@@ -21,7 +21,7 @@
 <?rfc comments="yes"?>
 <?rfc inline="yes"?>
 <?rfc text-list-symbols="-o*+"?>
-<rfc category="info" docName="draft-irtf-icnrg-terminology-@@REVISION@@">
+<rfc category="info" docName="draft-irtf-icnrg-terminology-07">
   <front>
     <title abbrev="ICN Terminology">Information-Centric Networking (ICN): CCNx and NDN Terminology</title>
 
@@ -67,7 +67,7 @@
       </address>
     </author>
 
-    <date month="January" year="2020"/>
+    <date month="November" year="2019"/>
 
     <area>IRTF</area>
     <workgroup>ICNRG</workgroup>
@@ -131,7 +131,7 @@ requestor         zero or more           data sources or
 
 	<t><spanx style="strong">Trust</spanx>:</t>
 	<t><list style="empty">
-		<t>Data authenticity is distinct from data trustworthiness, though the two concepts are related. A packet is authentic if it has a valid name-to-content binding. A packet is trustworthy, i.e., it comes from a reputable or trusted origin, if this binding is valid in the context of a trust model. The trust model provides assurance that the name used for a given piece of content is appropriate for the value of the content. <xref target="security-considerations"/> discusses this further.</t>
+		<t>Data authenticity is distinct from data trustworthiness, though the two concepts are related. A packet is authentic if it has a valid name-to-content binding. A packet is trustworthy, i.e., it comes from a reputable or trusted origin, if this binding is valid in the context of a trust model. <xref target="security-considerations"/> discusses this further.</t>
 	</list></t>
 	
 	<t><spanx style="strong">Segmenting and Versioning</spanx>:</t>
@@ -151,7 +151,7 @@ requestor         zero or more           data sources or
 	
 	<t><spanx style="strong">Forwarding Plane</spanx>:</t>
 	<t><list style="empty">
-		<t>The canonical way of implementing packet forwarding in an ICN network relies on three data structures that capture a node’s state: a Forwarding Interest Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes Interest forwarding strategies which take input from both FIB and measurements to make Interest forwarding decisions. When a node receives an Interest packet, it checks its CS and PIT to find a matching entry; if no match is found, the node records the Interest in its PIT and forwards the Interest to the next hop(s) towards the requested content, based on the information in its FIB.</t>
+		<t>The canonical way of implementing packet forwarding in an ICN network relies on three data structures that capture a node’s state: a Forwarding Interest Table (FIB), a Pending Interest Table (PIT), and a Content Store (CS). It also utilizes Interest forwarding strategies which takes input from both FIB and measurements to make Interest forwarding decisions. When a node receives an Interest packet, it checks its CS and PIT to find a matching entry; if no match is found, the node records the Interest in its PIT and forwards the Interest to the next hop(s) towards the requested content, based on the information in its FIB.</t>
 	</list></t>
 </section>
 
@@ -166,7 +166,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Data packet Immutability</spanx>:</t>
 		<t><list style="empty">
-			<t>After a data packet is created, the cryptographic signature binding the name to the content ensures that if either the content or the name changes, that change will be detected and the packet discarded. If the content carried in a data packet is intended to be mutable, versioning of the name should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of various versions of content such that coordination among the various instances in a distributed system can be achieved.</t>
+			<t>After a data packet is created, the cryptographic hash binding the name to the content ensures that if either the content or the name changes, that change will be detected and the packet discarded. If the content carried in a data packet is intended to be mutable, versioning of the name should be used, so that each version uniquely identifies an immutable instance of the content. This allows disambiguation of various versions of content such that coordination among the various instances in a distributed system can be achieved.</t>
 		</list></t>
 	</section>
 	
@@ -257,7 +257,7 @@ requestor         zero or more           data sources or
 		
 		<t><spanx style="strong">Interest aggregation</spanx>:</t>
 		<t><list style="empty">
-			<t>A process of combining multiple Interest packets with the same Name and additional restrictions for the same Data into a single PIT entry.</t>
+			<t>A process of combining multiple Interest packets with the same Name and additional restrictions for the same Data into a single PIT entry. Not the same as Interest suppression.</t>
 		</list></t>
 		<t><list style="empty">
 			<t><list style="empty">
@@ -448,7 +448,7 @@ requestor         zero or more           data sources or
     
 		<t><spanx style="strong">Nonce</spanx>:</t>
 		<t><list style="empty">
-			<t>A field of an Interest packet that transiently names an Interest instance (instance of Interest for a given name). Note: the specifications defining nonces in NDN do not necessarily satisfy all the properties of nonces as discussed in <xref target="RFC4949"/>.</t>
+			<t>A field of an Interest packet that transiently names an Interest instance (instance of Interest for a given name). Note: the use "nonce" as defined here for NDN does not imply semantics that satisfy all the properties of a cryptographic nonce as defined in, e.g. <xref target="RFC4949"/>.</t>
 		</list></t>
 		
 		<t><spanx style="strong">Exact Name</spanx>:</t>
@@ -578,7 +578,7 @@ requestor         zero or more           data sources or
     </section>
     
     <section title="Database Access" anchor="database-access">
-    	<t>A lookup service can be turned into a database access protocol by using the namespace structure to specify names as access keys into a database. A name prefix therefore stands for a collection or table of a database, while the rest of the name specifies the query expression to be executed.</t>
+    	<t>A lookup service can be turned into into a database access protocol by using the namespace structure to specify names as access keys into a database. A name prefix therefore stands for a collection or table of a database, while the rest of the name specifies the query expression to be executed.</t>
     </section>
     
     <section title="Remote Procedure Call" anchor="remote-procedure-call">
@@ -799,7 +799,7 @@ This document is a product of the Information Centric Networking research group 
     	
 	</references>
     <section anchor="acknowledgements" title="Acknowledgments">
-      <t>Marc Mosko provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-José Montpetit did a thorough IRSG review, which helped a lot to improve the text. Further comments during the IRSG Poll from Stephen Farrell, Ari Keränen, Spencer Dawkins, Carsten Bormann, and Brian Trammell further improved the document. Additional helpful comments were received as part of IESG conflict review from Mirja Kuehlewind and Benjamin Kaduk.</t>
+      <t>Marc Mosko provided much guidance and helpful precision in getting these terms carefully formed and the definitions precise. Marie-José Montpetit did a thorough IRSG review, which helped a lot to improve the text. Further comments during the IRSG Poll from Stephen Farrell, Ari Keränen, Spencer Dawkins, Carsten Bormann, and Brian Trammell further improved the document.</t>
     </section>
 </back>
 </rfc>

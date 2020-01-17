@@ -21,7 +21,7 @@
 <?rfc comments="yes"?>
 <?rfc inline="yes"?>
 <?rfc text-list-symbols="-o*+"?>
-<rfc category="info" docName="draft-irtf-icnrg-terminology-@@REVISION@@">
+<rfc category="info" docName="draft-irtf-icnrg-terminology-08">
   <front>
     <title abbrev="ICN Terminology">Information-Centric Networking (ICN): CCNx and NDN Terminology</title>
 
